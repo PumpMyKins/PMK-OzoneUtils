@@ -9,7 +9,9 @@ public class HelpIslandCmd implements ISubCommand {
 
 	@Override
 	public boolean onSubCommand(Player sender, Command cmd, List<String> args) {
-		// TODO Auto-generated method stub
+		
+		
+		
 		return false;
 	}
 

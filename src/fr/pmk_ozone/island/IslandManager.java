@@ -2,6 +2,7 @@ package fr.pmk_ozone.island;
 
 import fr.pmk_ozone.MainOzone;
 import fr.pmk_ozone.config.Config;
+import fr.pmk_ozone.island.commands.HelpIslandCmd;
 
 public class IslandManager {
 
@@ -29,6 +30,9 @@ public class IslandManager {
 		
 		MainOzone.getInstance().getCommand("island").setExecutor(islandCmd);
 		MainOzone.getInstance().getCommand("is").setExecutor(islandCmd);
+		
+		islandCmd.addSubCommand("help", new HelpIslandCmd());
+		islandCmd.addSubCommand("goto", new HelpIslandCmd());
 		
 	}
 
