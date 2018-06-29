@@ -11,4 +11,10 @@ public class HelpIslandCmd implements ISubCommand {
 		return false;
 	}
 
+	public boolean onSubCommand(Player p, Command cmd) {
+		
+		return onSubCommand(p, cmd, null);
+		
+	}
+
 }

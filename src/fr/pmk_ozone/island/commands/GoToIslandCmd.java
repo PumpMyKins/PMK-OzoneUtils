@@ -11,4 +11,11 @@ public class GoToIslandCmd implements ISubCommand{
 		return false;
 	}
 
+	public boolean onSubCommand(Player p, Command cmd) {
+		// TODO Auto-generated method stub
+		return onSubCommand(p, cmd, null);
+	}
+	
+	
+
 }
