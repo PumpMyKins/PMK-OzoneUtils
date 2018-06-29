@@ -1,5 +1,7 @@
 package fr.pmk_ozone.island;
 
+import java.util.List;
+
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
@@ -24,7 +26,7 @@ public class SubData {
 		this.iSubCommand = i;
 	}
 	
-	public boolean execute(Player sender , Command cmd , String[] args) {
+	public boolean execute(Player sender , Command cmd , List<String> args) {
 		
 		return this.iSubCommand.onSubCommand(sender, cmd, args);
 		

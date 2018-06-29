@@ -14,6 +14,8 @@ import fr.pmk_ozone.island.commands.ISubCommand;
 
 public class IslandCommandExecutor implements CommandExecutor {
 
+	public static final String NO_PERM = "Vous n'avez pas la permission de faire cela !";
+	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
 		// TODO Auto-generated method stub
@@ -22,19 +24,40 @@ public class IslandCommandExecutor implements CommandExecutor {
 			
 			Player p = (Player) sender;
 			
-			if( args.length == 0 ) {
+			if( args.length < 1 ) {
 				
-				return new GoToIslandCmd().onSubCommand(p, cmd, args);
+				System.out.println("No sub command");
+				return new GoToIslandCmd().onSubCommand(p, cmd);
 				
 			}else {
 				
-				for (SubData sub : this.subCommandList) {
+				String sub = args[0];
+				
+				System.out.println("Sub command");
+				for (SubData s : this.subCommandList) {
 					
+					String subCmd = s.getSubCommand();
+					String permission = s.getPermissionNode();
 					
+					if(sub.equals(subCmd)) {
+						
+						if(!permission.equals("none") & !p.hasPermission(permission)) {
+							// pas la permission
+							p.sendMessage(NO_PERM);
+							
+						}else {
+							// permission trouvé
+							System.out.println("Executor sub command : " + s.getSubCommandExecutor().getClass().getName());
+							return s.execute(p, cmd, getArgs(args));
+							
+						}
+						
+					}
 					
 				}
 				
-				return new HelpIslandCmd().onSubCommand(p, cmd, args);
+				System.out.println("Sub command no found");
+				return new HelpIslandCmd().onSubCommand(p, cmd);
 				
 			}
 			
@@ -69,6 +92,20 @@ public class IslandCommandExecutor implements CommandExecutor {
 
 	public List<SubData> getSubCommandList() {
 		return subCommandList;
+	}
+	
+	private static List<String> getArgs(String[] a) {
+		
+		List<String> l = new ArrayList<>();
+		
+		for (int i = 1; i < a.length; i++) {
+			
+			l.add(a[i]);
+			
+		}
+		
+		return l;
+		
 	}
 	
 }
