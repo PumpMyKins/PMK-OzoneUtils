@@ -8,7 +8,7 @@ import fr.pmk_ozone.island.commands.ISubCommand;
 public class SubData {
 
 	private String permissionNode;
-	private String subCommand = "";
+	private String subCommand = "none";
 	private ISubCommand iSubCommand;
 	
 	public SubData(String s,String p, ISubCommand i) {
@@ -42,10 +42,10 @@ public class SubData {
 	public void setSubCommand(String subCommand) {
 		this.subCommand = subCommand;
 	}
-	public ISubCommand getiSubCommand() {
+	public ISubCommand getSubCommandExecutor() {
 		return iSubCommand;
 	}
-	public void setiSubCommand(ISubCommand iSubCommand) {
+	public void setSubCommandExecutor(ISubCommand iSubCommand) {
 		this.iSubCommand = iSubCommand;
 	}
 	
