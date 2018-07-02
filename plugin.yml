@@ -1,0 +1,9 @@
+name: PumpMyBlock
+version: v1.0
+author: Clem_Fern
+main: fr.pmk_ozone.MainOzone
+commands:
+  island:
+    description: Affiche toutes les commandes disponibles pour les iles.
+  is:
+    description: Affiche toutes les commandes disponibles pour les iles.
