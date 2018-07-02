@@ -10,9 +10,9 @@ public class HelpIslandCmd implements ISubCommand {
 	@Override
 	public boolean onSubCommand(Player sender, Command cmd, List<String> args) {
 		
+		sender.sendMessage("help commande");
 		
-		
-		return false;
+		return true;
 	}
 
 	public boolean onSubCommand(Player p, Command cmd) {

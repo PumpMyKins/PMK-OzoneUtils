@@ -9,8 +9,9 @@ public class GoToIslandCmd implements ISubCommand{
 
 	@Override
 	public boolean onSubCommand(Player sender, Command cmd, List<String> args) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		sender.sendMessage("go to commande");		
+		return true;
 	}
 
 	public boolean onSubCommand(Player p, Command cmd) {
