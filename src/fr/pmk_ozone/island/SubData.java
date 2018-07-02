@@ -9,8 +9,8 @@ import fr.pmk_ozone.island.commands.ISubCommand;
 
 public class SubData {
 
-	private String permissionNode;
-	private String subCommand = "none";
+	private String permissionNode = "none";
+	private String subCommand;
 	private ISubCommand iSubCommand;
 	
 	public SubData(String s,String p, ISubCommand i) {
