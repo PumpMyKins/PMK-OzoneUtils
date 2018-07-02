@@ -44,6 +44,7 @@ public class IslandCommandExecutor implements CommandExecutor {
 						if(!permission.equals("none") & !p.hasPermission(permission)) {
 							// pas la permission
 							p.sendMessage(NO_PERM);
+							return true;
 							
 						}else {
 							// permission trouvé
