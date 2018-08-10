@@ -14,6 +14,7 @@ public class MainOzone extends JavaPlugin {
 	public void onEnable() {
 		
 		instance = this;
+		
 		conf = Config.getConfig(this);
 		
 		conf.initDataFolder();

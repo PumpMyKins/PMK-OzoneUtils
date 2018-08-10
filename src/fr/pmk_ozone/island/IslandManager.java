@@ -17,6 +17,8 @@ public class IslandManager {
 		
 		conf = c;
 		
+		
+		
 		return new IslandManager();
 		
 	}
@@ -32,9 +34,6 @@ public class IslandManager {
 		
 		islandCmd = new IslandCommandExecutor();
 		
-		MainOzone.getInstance().getCommand("island").setExecutor(islandCmd);
-		MainOzone.getInstance().getCommand("is").setExecutor(islandCmd);
-		
 		islandCmd.addSubCommand("help", new HelpIslandCmd());
 		islandCmd.addSubCommand("goto", new GoToIslandCmd());
 		
@@ -42,6 +41,9 @@ public class IslandManager {
 		islandCmd.addSubCommand("kick", new KickIslandCmd());
 		
 		islandCmd.addSubCommand("reset", new ResetIslandCmd());
+		
+		MainOzone.getInstance().getCommand("island").setExecutor(islandCmd);
+		MainOzone.getInstance().getCommand("is").setExecutor(islandCmd);
 		
 	}
 
