@@ -2,8 +2,11 @@ package fr.pmk_ozone.island;
 
 import fr.pmk_ozone.MainOzone;
 import fr.pmk_ozone.config.Config;
+import fr.pmk_ozone.island.commands.AddIslandCmd;
 import fr.pmk_ozone.island.commands.GoToIslandCmd;
 import fr.pmk_ozone.island.commands.HelpIslandCmd;
+import fr.pmk_ozone.island.commands.KickIslandCmd;
+import fr.pmk_ozone.island.commands.ResetIslandCmd;
 
 public class IslandManager {
 

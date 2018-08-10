@@ -1,11 +1,9 @@
-package fr.pmk_ozone.island;
+package fr.pmk_ozone.island.commands;
 
 import java.util.List;
 
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
-
-import fr.pmk_ozone.island.commands.ISubCommand;
 
 public class KickIslandCmd implements ISubCommand {
 
