@@ -54,5 +54,10 @@ public class IslandManager {
 	public void setIslandCmd(IslandCommandExecutor islandCmd) {
 		this.islandCmd = islandCmd;
 	}
+
+	public static void purgeIslands() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

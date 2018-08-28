@@ -20,8 +20,19 @@ public class MainOzone extends JavaPlugin {
 		conf.initDataFolder();
 		conf.initAndGetFile("config.yml");
 		conf.initAndGetFile("island_aide.yml");
+		conf.initAndGetFile("island.yml");
+		
+		
 		
 		IslandManager.init(conf);
+		
+	}
+	
+	@Override
+	public void onDisable() {
+		// TODO Auto-generated method stub
+		
+		IslandManager.purgeIslands();
 		
 	}
 
