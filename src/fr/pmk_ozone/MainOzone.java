@@ -1,9 +1,12 @@
 package fr.pmk_ozone;
 
+import java.io.File;
+
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.pmk_ozone.config.Config;
 import fr.pmk_ozone.island.IslandManager;
+import fr.pmk_ozone.island.commands.HelpIslandCmd;
 
 public class MainOzone extends JavaPlugin {
 
@@ -19,10 +22,11 @@ public class MainOzone extends JavaPlugin {
 		
 		conf.initDataFolder();
 		conf.initAndGetFile("config.yml");
-		conf.initAndGetFile("island_aide.yml");
-		conf.initAndGetFile("island.yml");	
+		File helpFile = conf.initAndGetFile("island_aide.yml");
 		
-		IslandManager.init(conf);
+		HelpIslandCmd.setMessage(helpFile);
+		
+		IslandManager is = IslandManager.init(conf);
 		
 	}
 	
