@@ -1,5 +1,8 @@
 package fr.pmk_ozone.island;
 
+import java.io.File;
+import java.io.IOException;
+
 import fr.pmk_ozone.MainOzone;
 import fr.pmk_ozone.config.Config;
 import fr.pmk_ozone.island.commands.AddIslandCmd;
@@ -17,9 +20,27 @@ public class IslandManager {
 		
 		conf = c;
 		
-		
+		try {
+			
+			initFolder();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 		
 		return new IslandManager();
+		
+	}
+	
+	private static void initFolder() throws IOException {
+		
+		File f = new File(MainOzone.getInstance().getDataFolder().getCanonicalPath() + File.separator + "islands");
+		
+		if(!f.exists()) {
+			f.mkdir();
+		}
 		
 	}
 
@@ -49,15 +70,6 @@ public class IslandManager {
 
 	public IslandCommandExecutor getIslandCmd() {
 		return islandCmd;
-	}
-
-	public void setIslandCmd(IslandCommandExecutor islandCmd) {
-		this.islandCmd = islandCmd;
-	}
-
-	public static void purgeIslands() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }

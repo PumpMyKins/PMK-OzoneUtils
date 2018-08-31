@@ -25,32 +25,7 @@ public class Config {
 		
 		if(!main.getDataFolder().exists()) {
 			main.getDataFolder().mkdir();
-		}
-		
-		
-		
-		try {
-			
-			System.out.println(main.getDataFolder().getCanonicalPath());
-			
-			File f = new File(main.getDataFolder().getCanonicalPath() + File.separator + ISLAND_PATH);
-			
-			if(!f.exists()) {
-				f.mkdir();
-			}
-			
-			f = new File(main.getDataFolder().getCanonicalPath() + File.separator + TEAM_PATH);
-			
-			if(!f.exists()) {
-				f.mkdir();
-			}
-			
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		}		
 		
 	}
 	
