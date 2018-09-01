@@ -3,9 +3,15 @@ package fr.pmk_ozone.island;
 import java.io.File;
 import java.io.IOException;
 
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+
+import com.sk89q.worldedit.util.YAMLConfiguration;
+
 import fr.pmk_ozone.MainOzone;
 import fr.pmk_ozone.config.Config;
 import fr.pmk_ozone.island.commands.AddIslandCmd;
+import fr.pmk_ozone.island.commands.CreateIslandCmd;
 import fr.pmk_ozone.island.commands.GoToIslandCmd;
 import fr.pmk_ozone.island.commands.HelpIslandCmd;
 import fr.pmk_ozone.island.commands.KickIslandCmd;
@@ -14,6 +20,10 @@ import fr.pmk_ozone.island.commands.ResetIslandCmd;
 public class IslandManager {
 
 	private static Config conf;
+	
+	private static final int islandsize = 4096;	
+	private static final int islandnum = 64;
+	
 	
 	public static IslandManager init(Config c) {
 		// TODO Auto-generated method stub
@@ -58,6 +68,8 @@ public class IslandManager {
 		islandCmd.addSubCommand("help", new HelpIslandCmd());
 		islandCmd.addSubCommand("goto", new GoToIslandCmd());
 		
+		islandCmd.addSubCommand("create", new CreateIslandCmd());
+		
 		islandCmd.addSubCommand("add", new AddIslandCmd());
 		islandCmd.addSubCommand("kick", new KickIslandCmd());
 		
@@ -71,5 +83,32 @@ public class IslandManager {
 	public IslandCommandExecutor getIslandCmd() {
 		return islandCmd;
 	}
+
+	public void setupIslands() throws IOException {
+		// TODO Auto-generated method stub
+		
+		for (int i = 0; i < islandnum ; i++) {
+			
+			File f = new File(MainOzone.getInstance().getDataFolder().getCanonicalPath() + File.separator + "islands" + File.separator + i);
+			
+			if(f.isDirectory() & f.exists()) {
+				continue;
+			}
+			
+			f.mkdirs();
+			
+		}
+		
+	}
 	
+	public boolean playerHasIsland(Player p) {
+		
+		String uuid = p.getUniqueId().toString();
+		
+		File f = new File(MainOzone.getInstance().getDataFolder(),"islands.yml");
+		YamlConfiguration y = conf.getConfiguration(f);
+		
+		return y.contains("islands." + uuid);
+		
+	}
 }
