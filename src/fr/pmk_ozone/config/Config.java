@@ -11,7 +11,6 @@ import fr.pmk_ozone.MainOzone;
 public class Config {
 
 	public static final String ISLAND_PATH = "islands";
-	public static final String TEAM_PATH = "teams";
 	
 	private static Config config = new Config();
 	private static MainOzone main;
