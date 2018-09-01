@@ -26,6 +26,7 @@ public class MainOzone extends JavaPlugin {
 		conf.initDataFolder();
 		conf.initAndGetFile("config.yml");
 		conf.initAndGetFile("islands.yml");
+		conf.initAndGetFile("islands_invite.yml");
 		File helpFile = conf.initAndGetFile("island_aide.yml");
 		
 		HelpIslandCmd.setMessage(helpFile);
