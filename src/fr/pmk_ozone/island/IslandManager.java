@@ -16,13 +16,14 @@ import fr.pmk_ozone.island.commands.GoToIslandCmd;
 import fr.pmk_ozone.island.commands.HelpIslandCmd;
 import fr.pmk_ozone.island.commands.KickIslandCmd;
 import fr.pmk_ozone.island.commands.ResetIslandCmd;
+import fr.pmk_ozone.island.data.IslandFileData;
 
 public class IslandManager {
 
 	private static Config conf;
 	
-	private static final int islandsize = 4096;	
-	private static final int islandnum = 64;
+	public static final int islandsize = 4096;	
+	public static final int islandnum = 64;
 	
 	
 	public static IslandManager init(Config c) {
@@ -101,7 +102,7 @@ public class IslandManager {
 		
 	}
 	
-	public Island createIsland(Player p) {
+	public Island createIsland(Player p) throws IOException {
 		
 		return Island.create(p);
 		
@@ -115,6 +116,23 @@ public class IslandManager {
 		YamlConfiguration y = conf.getConfiguration(f);
 		
 		return y.contains("islands." + uuid);
+		
+	}
+
+	public static void setIsland(Player p, IslandFileData isfd) {
+		// TODO Auto-generated method stub
+		
+		String uuid = p.getUniqueId().toString();
+		
+		File f = new File(MainOzone.getInstance().getDataFolder(),"islands.yml");
+		YamlConfiguration y = conf.getConfiguration(f);
+		
+		y.createSection("islands." + uuid);
+		
+		y.set("islands." + uuid + ".x", isfd.getX());
+		y.set("islands." + uuid + ".z", isfd.getZ());		
+		
+		y.save(f);
 		
 	}
 }
