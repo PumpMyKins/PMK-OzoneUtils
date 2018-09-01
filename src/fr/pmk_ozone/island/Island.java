@@ -45,9 +45,9 @@ public class Island {
 		
 		y.createSection("island.spawn");
 		
-		y.set("island.spawn.x", isfd.getX() + (IslandManager.islandsize/2));
+		y.set("island.spawn.x", isfd.getX() + (IslandManager.islandsize/2) + 0.5);
 		y.set("island.spawn.y", 60);
-		y.set("island.spawn.z", isfd.getZ() + (IslandManager.islandsize/2));
+		y.set("island.spawn.z", isfd.getZ() + (IslandManager.islandsize/2) + 0.5);
 		
 		y.set("island.players", new ArrayList<String>());
 		
@@ -128,9 +128,9 @@ public class Island {
 	
 	private String ownerUUID;
 	
-	private int spawnX;
-	private int spawnY;
-	private int spawnZ;
+	private double spawnX;
+	private double spawnY;
+	private double spawnZ;
 	
 	private List<String> playerList;
 	
@@ -142,9 +142,9 @@ public class Island {
 		
 		this.ownerUUID = y.getString("island.owner");
 		
-		this.spawnX = y.getInt("island.spawn.x");
-		this.spawnY = y.getInt("island.spawn.y");
-		this.spawnZ = y.getInt("island.spawn.z");
+		this.spawnX = y.getDouble("island.spawn.x");
+		this.spawnY = y.getDouble("island.spawn.y");
+		this.spawnZ = y.getDouble("island.spawn.z");
 		
 		this.playerList = y.getStringList("island.players");
 		
@@ -172,23 +172,23 @@ public class Island {
 		this.ownerUUID = ownerUUID;
 	}
 
-	public int getSpawnX() {
+	public double getSpawnX() {
 		return spawnX;
 	}
 
-	public void setSpawnX(int spawnX) {
+	public void setSpawnX(double spawnX) {
 		this.spawnX = spawnX;
 	}
 
-	public int getSpawnY() {
+	public double getSpawnY() {
 		return spawnY;
 	}
 
-	public void setSpawnY(int spawnY) {
+	public void setSpawnY(double spawnY) {
 		this.spawnY = spawnY;
 	}
 
-	public int getSpawnZ() {
+	public double getSpawnZ() {
 		return spawnZ;
 	}
 
