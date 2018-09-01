@@ -1,6 +1,7 @@
 package fr.pmk_ozone;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -12,6 +13,7 @@ public class MainOzone extends JavaPlugin {
 
 	private static MainOzone instance;
 	private static Config conf;
+	private static IslandManager is;
 	
 	@Override
 	public void onEnable() {
@@ -22,11 +24,23 @@ public class MainOzone extends JavaPlugin {
 		
 		conf.initDataFolder();
 		conf.initAndGetFile("config.yml");
+		conf.initAndGetFile("islands.yml");
 		File helpFile = conf.initAndGetFile("island_aide.yml");
 		
 		HelpIslandCmd.setMessage(helpFile);
 		
-		IslandManager is = IslandManager.init(conf);
+		is = IslandManager.init(conf);
+		
+		try {
+			is.setupIslands();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Impossible d'initialiser les islands !");
+			e.printStackTrace();
+			getServer().shutdown();
+		}
+		
+		
 		
 	}
 	
@@ -40,6 +54,10 @@ public class MainOzone extends JavaPlugin {
 
 	public static MainOzone getInstance() {
 		return instance;
+	}
+	
+	public static IslandManager getIslandManager() {
+		return is;
 	}
 	
 }
