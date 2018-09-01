@@ -17,8 +17,9 @@ public class CreateIslandCmd implements ISubCommand {
 		IslandManager is = MainOzone.getIslandManager();
 		
 		if(is.playerHasIsland(sender)) {
-			// téléportation
-			System.out.println("téléportation");			
+			
+			aide(sender);
+			
 		}else {
 			// affichage aide
 			
@@ -30,6 +31,9 @@ public class CreateIslandCmd implements ISubCommand {
 	@Override
 	public void aide(Player p) {
 		// TODO Auto-generated method stub
+		p.sendMessage("Vous faite parti / possédez déjà une ile.");
+		p.sendMessage("Cliquez ICI pour vous y téléporter !"); // click = tp
+		p.sendMessage("Vous pouvez également quitter votre ile actuelle ou la réinitialiser !"); // click quitter = quitter || click réinit = reinit
 		
 	}
 	
