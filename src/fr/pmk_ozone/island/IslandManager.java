@@ -6,8 +6,6 @@ import java.io.IOException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
-import com.sk89q.worldedit.util.YAMLConfiguration;
-
 import fr.pmk_ozone.MainOzone;
 import fr.pmk_ozone.config.Config;
 import fr.pmk_ozone.island.commands.AddIslandCmd;
@@ -86,6 +84,8 @@ public class IslandManager {
 	public IslandCommandExecutor getIslandCmd() {
 		return islandCmd;
 	}
+	
+	
 
 	public void setupIslands() throws IOException {
 		// TODO Auto-generated method stub
@@ -107,6 +107,22 @@ public class IslandManager {
 	public Island createIsland(Player p) throws IOException {
 		
 		return Island.create(p);
+		
+	}
+	
+	public Island getIsland(Player p) {
+		
+		String uuid = p.getUniqueId().toString();
+		
+		File f = new File(MainOzone.getInstance().getDataFolder(),"islands.yml");
+		YamlConfiguration y = conf.getConfiguration(f);
+		
+		int x = y.getInt("islands." + uuid + ".x");
+		int z = y.getInt("islands." + uuid + ".z");
+		
+		f = new File(MainOzone.getInstance().getDataFolder(), "islands" + File.separator + x + File.separator + z + ".yml");
+		
+		return Island.get(f);
 		
 	}
 	
