@@ -20,9 +20,9 @@ import com.sk89q.worldedit.data.DataException;
 import com.sk89q.worldedit.schematic.SchematicFormat;
 
 import fr.pmk_ozone.MainOzone;
-import fr.pmk_ozone.config.Config;
 import fr.pmk_ozone.island.data.IslandFileData;
 
+@SuppressWarnings("deprecation")
 public class Island {
 
 	public static Island create(Player p) throws IOException {
@@ -61,7 +61,7 @@ public class Island {
 		
 		try {
 			pasteIsland(l);
-		} catch (@SuppressWarnings("deprecation") DataException | MaxChangedBlocksException e) {
+		} catch (DataException | MaxChangedBlocksException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
@@ -73,7 +73,10 @@ public class Island {
 		
 	}
 	
-	@SuppressWarnings("deprecation")
+	public static Island get(File f) {
+		return new Island(f);
+	}
+	
 	private static void pasteIsland(Location loc) throws DataException, IOException, MaxChangedBlocksException {
 		
 		File file = new File(MainOzone.getInstance().getDataFolder(),"ile.schematic");
