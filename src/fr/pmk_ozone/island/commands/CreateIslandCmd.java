@@ -21,7 +21,10 @@ public class CreateIslandCmd implements ISubCommand {
 			aide(sender);
 			
 		}else {
-			// affichage aide
+			// création de l'ile
+			System.out.println("create island");
+			
+			is.createIsland(sender);
 			
 		}
 		

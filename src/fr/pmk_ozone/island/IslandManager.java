@@ -101,6 +101,12 @@ public class IslandManager {
 		
 	}
 	
+	public Island createIsland(Player p) {
+		
+		return Island.create(p);
+		
+	}
+	
 	public boolean playerHasIsland(Player p) {
 		
 		String uuid = p.getUniqueId().toString();
