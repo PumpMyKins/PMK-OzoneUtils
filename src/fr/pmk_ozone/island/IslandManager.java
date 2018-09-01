@@ -119,7 +119,7 @@ public class IslandManager {
 		
 	}
 
-	public static void setIsland(Player p, IslandFileData isfd) {
+	public static void setIsland(Player p, IslandFileData isfd) throws IOException {
 		// TODO Auto-generated method stub
 		
 		String uuid = p.getUniqueId().toString();
