@@ -3,6 +3,7 @@ package fr.pmk_ozone;
 import java.io.File;
 import java.io.IOException;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.pmk_ozone.config.Config;
@@ -40,8 +41,6 @@ public class MainOzone extends JavaPlugin {
 			getServer().shutdown();
 		}
 		
-		
-		
 	}
 	
 	@Override
@@ -49,6 +48,12 @@ public class MainOzone extends JavaPlugin {
 		// TODO Auto-generated method stub
 		
 		//IslandManager.purgeIslands();
+		
+	}
+	
+	public static Config getConf() {
+		
+		return conf;
 		
 	}
 
