@@ -1,15 +1,11 @@
 package fr.pmk_ozone.island.commands;
 
-import java.io.File;
 import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-
-import com.sk89q.worldedit.bukkit.BukkitWorld;
 
 import fr.pmk_ozone.MainOzone;
 import fr.pmk_ozone.island.Island;
@@ -28,11 +24,7 @@ public class GoToIslandCmd implements ISubCommand{
 		IslandManager is = MainOzone.getIslandManager();
 		
 		if(is.playerHasIsland(sender)) {
-			// téléportation	
-			String uuid = sender.getUniqueId().toString();
-			
-			File f = new File(MainOzone.getInstance().getDataFolder(),"islands.yml");
-			YamlConfiguration y = MainOzone.getConf().getConfiguration(f);
+			// téléportation
 			
 			Island island = MainOzone.getIslandManager().getIsland(sender);
 			
