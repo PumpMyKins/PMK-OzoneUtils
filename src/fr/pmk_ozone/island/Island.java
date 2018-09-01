@@ -2,6 +2,8 @@ package fr.pmk_ozone.island;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -37,13 +39,17 @@ public class Island {
 		
 		YamlConfiguration y = MainOzone.getConf().getConfiguration(f);
 		
-		y.set("owner",p.getUniqueId().toString());
+		y.createSection("island");
 		
-		y.createSection("spawn");
+		y.set("island.owner",p.getUniqueId().toString());
 		
-		y.set("spawn.x", isfd.getX() + (IslandManager.islandsize/2));
-		y.set("spawn.y", 60);
-		y.set("spawn.z", isfd.getZ() + (IslandManager.islandsize/2));
+		y.createSection("island.spawn");
+		
+		y.set("island.spawn.x", isfd.getX() + (IslandManager.islandsize/2));
+		y.set("island.spawn.y", 60);
+		y.set("island.spawn.z", isfd.getZ() + (IslandManager.islandsize/2));
+		
+		y.set("island.players", new ArrayList<String>());
 		
 		//ajouter dans islands
 		
@@ -112,12 +118,103 @@ public class Island {
 		return null;
 	}
 	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	private File file;
+	private YamlConfiguration y;
+	
+	private String ownerUUID;
+	
+	private int spawnX;
+	private int spawnY;
+	private int spawnZ;
+	
+	private List<String> playerList;
+	
 	private Island(File f) {
 		
-		//création du fichier
+		this.file = f;
 		
-		//ajouter dans islands
+		this.y = MainOzone.getConf().getConfiguration(f);
 		
+		this.ownerUUID = y.getString("island.owner");
+		
+		this.spawnX = y.getInt("island.spawn.x");
+		this.spawnY = y.getInt("island.spawn.y");
+		this.spawnZ = y.getInt("island.spawn.z");
+		
+		this.playerList = y.getStringList("island.players");
+		
+	}
+	
+	public void save() throws IOException {
+		
+		y.set("island.owner", this.ownerUUID);
+		
+		y.set("island.spawn.x", this.spawnX);
+		y.set("island.spawn.y", this.spawnY);
+		y.set("island.spawn.z", this.spawnZ);
+		
+		y.set("island.players", this.playerList);
+		
+		y.save(this.file);
+		
+	}
+
+	public String getOwnerUUID() {
+		return ownerUUID;
+	}
+
+	public void setOwnerUUID(String ownerUUID) {
+		this.ownerUUID = ownerUUID;
+	}
+
+	public int getSpawnX() {
+		return spawnX;
+	}
+
+	public void setSpawnX(int spawnX) {
+		this.spawnX = spawnX;
+	}
+
+	public int getSpawnY() {
+		return spawnY;
+	}
+
+	public void setSpawnY(int spawnY) {
+		this.spawnY = spawnY;
+	}
+
+	public int getSpawnZ() {
+		return spawnZ;
+	}
+
+	public void setSpawnZ(int spawnZ) {
+		this.spawnZ = spawnZ;
+	}
+
+	public List<String> getPlayerList() {
+		return playerList;
+	}
+
+	public void setPlayerList(List<String> playerList) {
+		this.playerList = playerList;
+	}
+
+	public File getFile() {
+		return file;
+	}
+
+	public void setFile(File file) {
+		this.file = file;
+	}
+
+	public YamlConfiguration getConf() {
+		return y;
+	}
+
+	public void setConf(YamlConfiguration conf) {
+		this.y = conf;
 	}
 
 }
