@@ -24,6 +24,8 @@ import fr.pmk_ozone.island.data.IslandFileData;
 
 @SuppressWarnings("deprecation")
 public class Island {
+	
+	public static final String prefix = "§6§l[§r§2Pump§eMy§aIsland§r§6§l]";
 
 	public static Island create(Player p) throws IOException {
 		
