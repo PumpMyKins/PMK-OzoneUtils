@@ -20,6 +20,7 @@ public class CreateIslandCmd implements ISubCommand {
 		if(is.playerHasIsland(sender)) {
 			
 			aide(sender);
+			return true;
 			
 		}else {
 			// création de l'ile
@@ -27,14 +28,16 @@ public class CreateIslandCmd implements ISubCommand {
 			
 			try {
 				is.createIsland(sender);
+				sender.sendMessage("Ile creer avec succès");
+				return true;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return false;
 			}
 			
 		}
 		
-		return false;
 	}
 
 	@Override
