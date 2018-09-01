@@ -13,4 +13,10 @@ public class KickIslandCmd implements ISubCommand {
 		return false;
 	}
 
+	@Override
+	public void aide(Player p) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

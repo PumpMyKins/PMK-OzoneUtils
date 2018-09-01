@@ -41,4 +41,10 @@ public class HelpIslandCmd implements ISubCommand {
 		
 	}
 
+	@Override
+	public void aide(Player p) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

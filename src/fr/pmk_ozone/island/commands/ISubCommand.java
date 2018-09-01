@@ -8,5 +8,5 @@ import org.bukkit.entity.Player;
 public interface ISubCommand {
 
 	public boolean onSubCommand(Player sender , Command cmd , List<String> args);
-	
+	public void aide(Player p);
 }

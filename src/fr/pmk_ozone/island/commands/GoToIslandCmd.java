@@ -18,6 +18,12 @@ public class GoToIslandCmd implements ISubCommand{
 		// TODO Auto-generated method stub
 		return onSubCommand(p, cmd, null);
 	}
+
+	@Override
+	public void aide(Player p) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 
