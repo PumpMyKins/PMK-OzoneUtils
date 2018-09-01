@@ -3,7 +3,6 @@ package fr.pmk_ozone;
 import java.io.File;
 import java.io.IOException;
 
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.pmk_ozone.config.Config;
@@ -27,8 +26,8 @@ public class MainOzone extends JavaPlugin {
 		conf.initAndGetFile("config.yml");
 		conf.initAndGetFile("islands.yml");
 		conf.initAndGetFile("islands_invite.yml");
-		File helpFile = conf.initAndGetFile("island_aide.yml");
 		
+		File helpFile = conf.initAndGetFile("island_aide.yml");
 		HelpIslandCmd.setMessage(helpFile);
 		
 		is = IslandManager.init(conf);
