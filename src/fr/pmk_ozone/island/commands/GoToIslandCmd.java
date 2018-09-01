@@ -62,7 +62,7 @@ public class GoToIslandCmd implements ISubCommand{
 		TextComponent ici = new TextComponent("ICI");
 		ici.setBold(true);
 		ici.setColor(ChatColor.DARK_AQUA);
-		ici.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "is create"));
+		ici.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/is create"));
 		
 		ici.setHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT, new ComponentBuilder( "§3§lPour créer votre île !" ).create() ) );
 		
