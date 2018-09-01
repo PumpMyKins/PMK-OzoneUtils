@@ -1,5 +1,6 @@
 package fr.pmk_ozone.island.commands;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.bukkit.command.Command;
@@ -24,7 +25,12 @@ public class CreateIslandCmd implements ISubCommand {
 			// création de l'ile
 			System.out.println("create island");
 			
-			is.createIsland(sender);
+			try {
+				is.createIsland(sender);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		}
 		
