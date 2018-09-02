@@ -23,6 +23,13 @@ public class AddIslandCmd implements ISubCommand {
 		
 		if(is.playerHasIsland(sender)) {
 			
+			Island island = MainOzone.getIslandManager().getIsland(sender);
+			
+			if(!sender.getUniqueId().toString().equals(island.getOwnerUUID())) {
+				aide4(sender);
+				return true;
+			}
+			
 			if(args.isEmpty()) {
 				aide(sender);
 				return false;
@@ -64,7 +71,7 @@ public class AddIslandCmd implements ISubCommand {
 								// réussite donc ajout
 								y.save(f);
 								sender.sendMessage("§d" + p.getDisplayName() + " a bien été invité sur votre île !");
-								p.sendMessage(Island.prefix + "§d" + sender.getDisplayName() + " vous a invité dans sur son île !");
+								p.sendMessage(Island.prefix + "§d" + sender.getDisplayName() + " vous a invité sur son île !");
 								return true;
 							} catch (IOException e) {
 								// erreur de save
@@ -91,6 +98,12 @@ public class AddIslandCmd implements ISubCommand {
 			new GoToIslandCmd().aide1(sender);
 			return true;
 		}
+		
+	}
+	
+	private void aide4(Player p) {
+		
+		p.sendMessage(Island.prefix + "§r§c Vous devez etre propriétaire de l'île pour ajouter un joueur !");
 		
 	}
 	
