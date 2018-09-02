@@ -14,6 +14,7 @@ import fr.pmk_ozone.island.commands.GoToIslandCmd;
 import fr.pmk_ozone.island.commands.HelpIslandCmd;
 import fr.pmk_ozone.island.commands.JoinIslandCmd;
 import fr.pmk_ozone.island.commands.KickIslandCmd;
+import fr.pmk_ozone.island.commands.LeaveIslandCmd;
 import fr.pmk_ozone.island.commands.ResetIslandCmd;
 import fr.pmk_ozone.island.data.IslandFileData;
 
@@ -74,6 +75,7 @@ public class IslandManager {
 		islandCmd.addSubCommand("kick", new KickIslandCmd());
 		islandCmd.addSubCommand("join", new JoinIslandCmd());
 		
+		islandCmd.addSubCommand("leave", new LeaveIslandCmd());
 		islandCmd.addSubCommand("reset", new ResetIslandCmd());
 		
 		MainOzone.getInstance().getCommand("island").setExecutor(islandCmd);
