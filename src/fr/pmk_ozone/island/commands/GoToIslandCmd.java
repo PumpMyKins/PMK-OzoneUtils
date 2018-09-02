@@ -29,14 +29,15 @@ public class GoToIslandCmd implements ISubCommand{
 			Island island = MainOzone.getIslandManager().getIsland(sender);
 			
 			sender.teleport(new Location(Bukkit.getWorld("world"), island.getSpawnX(), island.getSpawnY(), island.getSpawnZ()));
+			return true;
 			
 		}else {
 			// affichage aide
 			aide(sender);
+			aide1(sender);
+			return false;
 			
 		}
-		
-		return false;
 		
 	}
 
@@ -50,6 +51,10 @@ public class GoToIslandCmd implements ISubCommand{
 		// TODO Auto-generated method stub
 		
 		p.sendMessage(Island.prefix + "§r§c Sans île, vous ne pouvez pas vous téléporter à celle-ci !");
+		
+	}
+	
+	public void aide1(Player p) {
 		
 		TextComponent ici = new TextComponent("ICI");
 		ici.setBold(true);

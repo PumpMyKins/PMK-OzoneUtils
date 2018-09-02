@@ -86,9 +86,16 @@ public class AddIslandCmd implements ISubCommand {
 				
 		}else {
 			// affichage aide
-			new GoToIslandCmd().aide(sender);
+			aide3(sender);
+			new GoToIslandCmd().aide1(sender);
 			return true;
 		}
+		
+	}
+	
+	private void aide3(Player p) {
+		
+		p.sendMessage(Island.prefix + "§r§c Sans ile, vous ne pouvez pas ajouter un joueur à celle-ci !");
 		
 	}
 
