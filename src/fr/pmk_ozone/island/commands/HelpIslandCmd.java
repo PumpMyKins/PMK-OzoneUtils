@@ -7,8 +7,6 @@ import java.util.List;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
-import net.minecraft.util.io.netty.handler.codec.compression.SnappyFramedEncoder;
-
 public class HelpIslandCmd implements ISubCommand {
 
 	private static List<String> helpList = new ArrayList<String>();
