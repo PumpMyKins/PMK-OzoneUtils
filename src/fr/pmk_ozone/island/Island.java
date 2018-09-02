@@ -47,6 +47,10 @@ public class Island {
 		
 		y.createSection("island.spawn");
 		
+		y.set("island.x", isfd.getX());
+		y.set("island.z", isfd.getZ());
+		y.set("island.pathname", isfd.getPathName());
+		
 		y.set("island.spawn.x", (isfd.getX() * IslandManager.islandsize) + (IslandManager.islandsize/2) + 0.5);
 		y.set("island.spawn.y", 60);
 		y.set("island.spawn.z", (isfd.getZ()* IslandManager.islandsize) + (IslandManager.islandsize/2) + 0.5);
@@ -134,6 +138,34 @@ public class Island {
 	private double spawnY;
 	private double spawnZ;
 	
+	private int dataX;
+	private int dataZ;
+	private String pathName;
+	
+	public int getDataX() {
+		return dataX;
+	}
+
+	public void setDataX(int dataX) {
+		this.dataX = dataX;
+	}
+
+	public int getDataZ() {
+		return dataZ;
+	}
+
+	public void setDataZ(int dataZ) {
+		this.dataZ = dataZ;
+	}
+
+	public String getPathName() {
+		return pathName;
+	}
+
+	public void setPathName(String pathName) {
+		this.pathName = pathName;
+	}
+
 	private List<String> playerList;
 	
 	private Island(File f) {
@@ -143,6 +175,10 @@ public class Island {
 		this.y = MainOzone.getConf().getConfiguration(f);
 		
 		this.ownerUUID = y.getString("island.owner");
+		
+		this.dataX = y.getInt("island.x");
+		this.dataZ = y.getInt("island.z");
+		this.pathName = y.getString("island.pathname");
 		
 		this.spawnX = y.getDouble("island.spawn.x");
 		this.spawnY = y.getDouble("island.spawn.y");
@@ -156,13 +192,15 @@ public class Island {
 		
 		y.set("island.owner", this.ownerUUID);
 		
-		y.set("island.spawn.x", this.spawnX);
-		y.set("island.spawn.y", this.spawnY);
-		y.set("island.spawn.z", this.spawnZ);
-		
 		y.set("island.players", this.playerList);
 		
 		y.save(this.file);
+		
+	}
+	
+	public void addPlayer(Player p) {
+		
+		playerList.add(p.getUniqueId().toString());
 		
 	}
 
@@ -220,6 +258,12 @@ public class Island {
 
 	public void setConf(YamlConfiguration conf) {
 		this.y = conf;
+	}
+	
+	public IslandFileData getIslandData() {
+		
+		return new IslandFileData(dataX, dataZ, pathName);
+		
 	}
 
 }
