@@ -47,9 +47,9 @@ public class Island {
 		
 		y.createSection("island.spawn");
 		
-		y.set("island.spawn.x", isfd.getX() + (IslandManager.islandsize/2) + 0.5);
+		y.set("island.spawn.x", (isfd.getX() * IslandManager.islandsize) + (IslandManager.islandsize/2) + 0.5);
 		y.set("island.spawn.y", 60);
-		y.set("island.spawn.z", isfd.getZ() + (IslandManager.islandsize/2) + 0.5);
+		y.set("island.spawn.z", (isfd.getZ()* IslandManager.islandsize) + (IslandManager.islandsize/2) + 0.5);
 		
 		y.set("island.players", new ArrayList<String>());
 		
@@ -59,7 +59,7 @@ public class Island {
 		
 		// copy de de la map
 		
-		Location l = new Location(Bukkit.getWorld("world"), isfd.getX() + (IslandManager.islandsize/2) - 8, 50, isfd.getZ() + (IslandManager.islandsize/2) - 5);
+		Location l = new Location(Bukkit.getWorld("world"), (isfd.getX() * IslandManager.islandsize) + (IslandManager.islandsize/2) - 8, 50, (isfd.getZ()* IslandManager.islandsize) + (IslandManager.islandsize/2) - 5);
 		
 		try {
 			pasteIsland(l);
