@@ -64,6 +64,7 @@ public class AddIslandCmd implements ISubCommand {
 								// réussite donc ajout
 								y.save(f);
 								sender.sendMessage("§d" + p.getDisplayName() + " a bien été invité sur votre île !");
+								p.sendMessage(Island.prefix + "§d" + sender.getDisplayName() + " vous a invité dans sur son île !");
 								return true;
 							} catch (IOException e) {
 								// erreur de save
@@ -107,7 +108,7 @@ public class AddIslandCmd implements ISubCommand {
 	@Override
 	public void aide(Player p) {
 		// TODO Auto-generated method stub
-		p.sendMessage(Island.prefix + "§r§c Vous devez donné un nom de joueur valide et connecté !");
+		p.sendMessage(Island.prefix + "§r§c Vous devez donné un nom de joueur non valide et connecté !");
 	}
 	
 	public void aide1(Player p) {
