@@ -34,7 +34,9 @@ public class CreateIslandCmd implements ISubCommand {
 			
 			try {
 				is.createIsland(sender);
-				sender.sendMessage("§dIle créée avec succès !");
+				sender.sendMessage(Island.prefix +"§d Ile créée avec succès !");
+				aide1(sender);
+				
 				return true;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -50,6 +52,10 @@ public class CreateIslandCmd implements ISubCommand {
 	public void aide(Player p) {
 		// TODO Auto-generated method stub
 		p.sendMessage(Island.prefix + "§r§c Vous faites parti / possédez déjà une ile.");
+		
+	}
+	
+	public void aide1(Player p) {
 		
 		TextComponent ici = new TextComponent("ICI");
 		ici.setBold(true);
