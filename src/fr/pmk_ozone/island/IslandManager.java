@@ -135,7 +135,28 @@ public class IslandManager {
 		File f = new File(MainOzone.getInstance().getDataFolder(),"islands.yml");
 		YamlConfiguration y = conf.getConfiguration(f);
 		
-		return y.contains("islands." + uuid);
+		int x = y.getInt("islands." + uuid + ".x");
+		int z = y.getInt("islands." + uuid + ".z");
+		
+		if(x != -1 & z != -1 & y.contains("islands." + uuid)) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	
+	public static void unsetIsland(Player p) throws IOException {
+		
+		String uuid = p.getUniqueId().toString();
+		
+		File f = new File(MainOzone.getInstance().getDataFolder(),"islands.yml");
+		YamlConfiguration y = conf.getConfiguration(f);
+		
+		y.set("islands." + uuid + ".x", -1);
+		y.set("islands." + uuid + ".z", -1);	
+		
+		y.save(f);
 		
 	}
 
