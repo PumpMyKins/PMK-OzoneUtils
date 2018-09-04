@@ -41,6 +41,8 @@ public class MainOzone extends JavaPlugin {
 			getServer().shutdown();
 		}
 		
+		getServer().getPluginManager().registerEvents(new PlayerEvents(), this);
+		
 	}
 	
 	@Override
