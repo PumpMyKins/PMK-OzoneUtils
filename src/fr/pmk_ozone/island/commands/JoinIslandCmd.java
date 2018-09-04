@@ -83,7 +83,8 @@ public class JoinIslandCmd implements ISubCommand {
 									y.set("invite." + sender.getUniqueId().toString(), l);
 									y.save(f);
 									
-									sender.sendMessage(Island.prefix + "§r§d Vous avez accepté l'invitation de " + owner.getName());
+									sender.sendMessage(Island.prefix + "§r§d Vous avez accepté l'invitation vers l'île " + owner.getName());
+									new CreateIslandCmd().aide1(sender);
 									
 									break;
 									

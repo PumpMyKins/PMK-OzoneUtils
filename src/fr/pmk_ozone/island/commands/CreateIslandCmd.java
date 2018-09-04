@@ -26,6 +26,7 @@ public class CreateIslandCmd implements ISubCommand {
 		if(is.playerHasIsland(sender)) {
 			
 			aide(sender);
+			aide1(sender);
 			return true;
 			
 		}else {

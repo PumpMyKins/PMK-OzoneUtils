@@ -70,7 +70,7 @@ public class AddIslandCmd implements ISubCommand {
 							try {
 								// réussite donc ajout
 								y.save(f);
-								sender.sendMessage("§d" + p.getDisplayName() + " a bien été invité sur votre île !");
+								sender.sendMessage(Island.prefix +"§d " + p.getDisplayName() + " a bien été invité sur votre île !");
 								p.sendMessage(Island.prefix + "§d" + sender.getDisplayName() + " vous a invité sur son île !");
 								return true;
 							} catch (IOException e) {
