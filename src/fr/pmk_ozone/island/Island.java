@@ -63,7 +63,7 @@ public class Island {
 		
 		// copy de de la map
 		
-		Location l = new Location(Bukkit.getWorld("world"), (isfd.getX() * IslandManager.islandsize) + (IslandManager.islandsize/2) - 8, 50, (isfd.getZ()* IslandManager.islandsize) + (IslandManager.islandsize/2) - 5);
+		Location l = new Location(Bukkit.getWorld("Void"), (isfd.getX() * IslandManager.islandsize) + (IslandManager.islandsize/2) - 8, 50, (isfd.getZ()* IslandManager.islandsize) + (IslandManager.islandsize/2) - 5);
 		
 		try {
 			pasteIsland(l);

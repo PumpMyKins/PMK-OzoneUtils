@@ -28,7 +28,7 @@ public class GoToIslandCmd implements ISubCommand{
 			
 			Island island = MainOzone.getIslandManager().getIsland(sender);
 			
-			sender.teleport(new Location(Bukkit.getWorld("world"), island.getSpawnX(), island.getSpawnY(), island.getSpawnZ()));
+			sender.teleport(new Location(Bukkit.getWorld("Void"), island.getSpawnX(), island.getSpawnY(), island.getSpawnZ()));
 			return true;
 			
 		}else {
