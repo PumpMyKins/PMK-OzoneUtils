@@ -20,6 +20,8 @@ public class MainOzone extends JavaPlugin {
 		
 		instance = this;
 		
+		 this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+		
 		conf = Config.getConfig(this);
 		
 		conf.initDataFolder();
