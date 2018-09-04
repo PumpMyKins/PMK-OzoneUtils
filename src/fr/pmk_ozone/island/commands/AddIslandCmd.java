@@ -40,6 +40,12 @@ public class AddIslandCmd implements ISubCommand {
 				if(p != null) {
 					// joueur trouvé
 					
+					if(island.getPlayerList().contains(p.getUniqueId().toString())) {
+						
+						aide5(sender);
+						return false;
+					}
+					
 					if(p.getName().equals(sender.getName())) {
 						// check invite soit meme
 						aide1(sender);
@@ -101,6 +107,16 @@ public class AddIslandCmd implements ISubCommand {
 		
 	}
 	
+	
+	
+	private void aide5(Player p) {
+		// TODO Auto-generated method stub
+		p.sendMessage(Island.prefix + "§r§c Le joueur invité fait déjà parti de votre île !");
+		
+	}
+
+
+
 	private void aide4(Player p) {
 		
 		p.sendMessage(Island.prefix + "§r§c Vous devez etre propriétaire de l'île pour ajouter un joueur !");
