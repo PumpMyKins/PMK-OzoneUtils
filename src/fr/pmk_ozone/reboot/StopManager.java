@@ -21,7 +21,7 @@ public class StopManager {
 	
 	private static void startScheduler(List<String> timeList) {
 		
-		
+			
 		
 	}
 	
@@ -30,7 +30,7 @@ public class StopManager {
 		List<String> timeList = getRebootList();
 		
 		if(timeList.isEmpty())
-			return;
+			return;	
 		
 		startScheduler(timeList);
 		
