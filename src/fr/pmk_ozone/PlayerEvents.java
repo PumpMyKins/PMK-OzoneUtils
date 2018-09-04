@@ -8,7 +8,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
+
 import fr.pmk_ozone.island.IslandManager;
+import fr.pmk_ozone.reboot.StopManager;
 
 public class PlayerEvents implements Listener {
 
@@ -16,6 +20,16 @@ public class PlayerEvents implements Listener {
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		
 		Player p = e.getPlayer();
+		
+		if(StopManager.stop) {
+			
+			ByteArrayDataOutput out = ByteStreams.newDataOutput();
+			out.writeUTF("Connect");
+			out.writeUTF("lobby");
+			
+			p.sendPluginMessage(MainOzone.getInstance(), "BungeeCord", out.toByteArray());
+			
+		}
 		
 		e.setJoinMessage("§l[§r§a+§r§l]§r§e " + p.getName());
 		
