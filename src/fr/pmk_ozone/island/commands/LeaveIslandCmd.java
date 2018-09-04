@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
@@ -38,6 +40,7 @@ public class LeaveIslandCmd implements ISubCommand {
 			}
 			//quitter
 			sender.sendMessage(Island.prefix + "§r§d Vous venez de quitter votre île !");
+			sender.teleport(new Location(Bukkit.getWorld("Void"), -29, 84, -480));
 			
 			for (Iterator<String> i = island.getPlayerList().iterator(); i.hasNext();) {
 				
