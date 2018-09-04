@@ -3,6 +3,8 @@ package fr.pmk_ozone.island;
 import java.io.File;
 import java.io.IOException;
 
+import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
@@ -175,5 +177,33 @@ public class IslandManager {
 		
 		y.save(f);
 		
+	}
+
+	public Island getIsland(OfflinePlayer p) {
+		
+		String uuid = p.getUniqueId().toString();
+		
+		File f = new File(MainOzone.getInstance().getDataFolder(),"islands.yml");
+		YamlConfiguration y = conf.getConfiguration(f);
+		
+		int x = y.getInt("islands." + uuid + ".x");
+		int z = y.getInt("islands." + uuid + ".z");
+		
+		f = new File(MainOzone.getInstance().getDataFolder(), "islands" + File.separator + x + File.separator + z + ".yml");
+		
+		return Island.get(f);
+	}
+
+	public static void unsetIsland(OfflinePlayer p) throws IOException {
+		// TODO Auto-generated method stub
+		String uuid = p.getUniqueId().toString();
+		
+		File f = new File(MainOzone.getInstance().getDataFolder(),"islands.yml");
+		YamlConfiguration y = conf.getConfiguration(f);
+		
+		y.set("islands." + uuid + ".x", -1);
+		y.set("islands." + uuid + ".z", -1);	
+		
+		y.save(f);
 	}
 }

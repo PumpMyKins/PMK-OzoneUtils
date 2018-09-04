@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -69,7 +70,7 @@ public class JoinIslandCmd implements ISubCommand {
 									
 									i.remove();
 									
-									Player owner = Bukkit.getPlayer(UUID.fromString(u));
+									OfflinePlayer owner = MainOzone.getInstance().getServer().getOfflinePlayer(UUID.fromString(u));
 									
 									Island island = MainOzone.getIslandManager().getIsland(owner);
 									
@@ -137,7 +138,7 @@ public class JoinIslandCmd implements ISubCommand {
 		
 		for (String string : l) {
 			
-			Player t = Bukkit.getPlayer(UUID.fromString(string));
+			OfflinePlayer t = MainOzone.getInstance().getServer().getOfflinePlayer(UUID.fromString(string));
 			
 			TextComponent accept = new TextComponent("§l§2[√]");
 			accept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/is join " + string + " -a"));
