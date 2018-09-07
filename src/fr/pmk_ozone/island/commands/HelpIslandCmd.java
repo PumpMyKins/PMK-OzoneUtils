@@ -14,8 +14,6 @@ public class HelpIslandCmd implements ISubCommand {
 	@Override
 	public boolean onSubCommand(Player sender, Command cmd, List<String> args) {
 		
-		sender.sendMessage("help commande");
-		
 		sender.sendMessage("§3§l=======§r§b PumpMyAide§r§3§l =======");
 		
 		for (String string : helpList) {
@@ -38,8 +36,10 @@ public class HelpIslandCmd implements ISubCommand {
 	public static void setMessage(File helpFile) {
 		// TODO Auto-generated method stub
 		
-		
-		
+		helpList.add("§3/is leave pour quitter votre ile");
+		helpList.add("§3/is kick pour afficher la liste des joueurs à exclure");
+		helpList.add("§3/is add pour ajouter quelqu'un à votre ile");
+		helpList.add("§3/is join pour afficher la liste des invitations");
 		
 	}
 
