@@ -30,12 +30,6 @@ public class KickIslandCmd implements ISubCommand {
 		if(is.playerHasIsland(sender)) {
 			
 			Island island = MainOzone.getIslandManager().getIsland(sender);
-			
-			if(!sender.getUniqueId().toString().equals(island.getOwnerUUID())) {
-				new AddIslandCmd().aide4(sender);
-				return true;
-			}
-			
 			List<String> l = island.getPlayerList();
 			
 			if(l.size() == 0) {
