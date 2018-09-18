@@ -115,7 +115,9 @@ public class AddIslandCmd implements ISubCommand {
 		
 	}
 
-	public void aide4(Player p) {
+
+
+	private void aide4(Player p) {
 		
 		p.sendMessage(Island.prefix + "§r§c Vous devez etre propriétaire de l'île pour ajouter un joueur !");
 		
