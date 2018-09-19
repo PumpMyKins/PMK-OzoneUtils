@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.pmk_ozone.config.Config;
+import fr.pmk_ozone.erebus.ErebusManager;
 import fr.pmk_ozone.island.IslandManager;
 import fr.pmk_ozone.island.commands.HelpIslandCmd;
 
@@ -14,6 +15,7 @@ public class MainOzone extends JavaPlugin {
 	private static MainOzone instance;
 	private static Config conf;
 	private static IslandManager is;
+	private static ErebusManager erebus;
 	
 	@Override
 	public void onEnable() {
@@ -33,6 +35,7 @@ public class MainOzone extends JavaPlugin {
 		HelpIslandCmd.setMessage(helpFile);
 		
 		is = IslandManager.init(conf);
+		erebus = ErebusManager.init();
 		
 		try {
 			is.setupIslands();
@@ -67,6 +70,9 @@ public class MainOzone extends JavaPlugin {
 	
 	public static IslandManager getIslandManager() {
 		return is;
+	}
+	public static ErebusManager getErebusManager() {
+		return erebus;
 	}
 	
 }
