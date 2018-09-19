@@ -60,6 +60,7 @@ public class ErebusBossCommand implements ISubCommand{
 			
 			sender.openInventory(invBoss);
 			
+			
 		}
 		else {
 			/* DEBUG
