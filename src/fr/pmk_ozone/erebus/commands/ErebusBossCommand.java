@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.event.inventory.InventoryClickEvent;
 
 import fr.pmk_ozone.erebus.commands.ISubCommand;
 import me.xanium.gemseconomy.api.GemsEconomyAPI;
@@ -59,7 +60,10 @@ public class ErebusBossCommand implements ISubCommand{
 			invBoss.setItem(6, overlord);  //4000 Prix
 			
 			sender.openInventory(invBoss);
-			
+			if(InventoryClickEvent.getAction() != null ) {
+				
+				
+			}
 			
 		}
 		else {
