@@ -5,12 +5,31 @@ import java.util.List;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
+import fr.pmk_ozone.MainOzone;
+import fr.pmk_ozone.island.Island;
+import fr.pmk_ozone.island.IslandManager;
+
 public class ResetIslandCmd implements ISubCommand {
 
 	@Override
 	public boolean onSubCommand(Player sender, Command cmd, List<String> args) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		IslandManager is = MainOzone.getIslandManager();
+		
+		if(is.playerHasIsland(sender)) {
+			
+			Island island = MainOzone.getIslandManager().getIsland(sender);
+			
+			
+			
+			return true;
+			
+		}else {
+			
+			aide(sender);		
+			return true;
+		}
+		
 	}
 
 	@Override
