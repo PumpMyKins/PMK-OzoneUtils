@@ -100,7 +100,7 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 					apiEco.withdraw(playerUUID, 2000);
 					clicker.sendMessage("2000 Vous ont été prélevé");
 					@SuppressWarnings("deprecation")
-					EntityType entitySpawn = EntityType.fromName("erebus-tarentulaminiboss");
+					EntityType entitySpawn = EntityType.fromName("erebus-tarantulaminiboss");
 					Location spawn = clicker.getLocation();
 					World spawnworld = clicker.getWorld();
 					spawnworld.spawnEntity(spawn.add(5, 5, 5), entitySpawn);
