@@ -5,30 +5,35 @@ import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.command.Command;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 import fr.pmk_ozone.erebus.commands.ISubCommand;
 import me.xanium.gemseconomy.api.GemsEconomyAPI;
 import net.md_5.bungee.api.ChatColor;
 
-public class ErebusBossCommand implements ISubCommand{
+public class ErebusBossCommand implements ISubCommand, Listener{
 
 		
 	Inventory invBoss = Bukkit.createInventory(null, 9, ChatColor.RED + "" + ChatColor.BOLD + "Boss de Erebus");
 	GemsEconomyAPI apiEco = new GemsEconomyAPI();
 	@SuppressWarnings("deprecation")
-	ItemStack tarentula = new ItemStack(Material.getMaterial(7200), 1,(short)0,(byte)43);
+	ItemStack tarentula = new ItemStack(Material.getMaterial(7200), 2,(short)0,(byte)43);
 	@SuppressWarnings("deprecation")
 	ItemStack crushroom = new ItemStack(Material.getMaterial(7200), 1,(short)0,(byte)40);
 	@SuppressWarnings("deprecation")
-	ItemStack overlord = new ItemStack(Material.getMaterial(7200), 1,(short)0,(byte)57);
+	ItemStack overlord = new ItemStack(Material.getMaterial(7200), 3,(short)0,(byte)57);
 
 	
 	//GUI OPENER + COMMAND SET
@@ -61,13 +66,12 @@ public class ErebusBossCommand implements ISubCommand{
 			overlordM.setLore(LoreOverLord);
 			overlord.setItemMeta(overlordM);
 			
-			invBoss.setItem(2, tarentula); //2000 
-			invBoss.setItem(4, crushroom); //1000 
-			invBoss.setItem(6, overlord);  //4000 
+			invBoss.setItem(4, tarentula); //2000 
+			invBoss.setItem(2, crushroom); //1000 
+			invBoss.setItem(6, overlord);  //4000
 			
 			sender.openInventory(invBoss);
 			
-
 		}
 		else {
 			/* DEBUG
@@ -91,35 +95,59 @@ public class ErebusBossCommand implements ISubCommand{
 		if(inventory.getName().equals(invBoss.getName())) {
 			event.setCancelled(true);
 			UUID playerUUID = clicker.getUniqueId();
-			if(clicked.isSimilar(tarentula)) {
-				
-				if(apiEco.getBalance(playerUUID) < 2000) {
+			if(clicked.getAmount() == 2) {
+				if(apiEco.getBalance(playerUUID) > 2000) {
 					apiEco.withdraw(playerUUID, 2000);
+					clicker.sendMessage("2000 Vous ont été prélevé");
+					@SuppressWarnings("deprecation")
+					EntityType entitySpawn = EntityType.fromName("erebus-tarentulaminiboss");
+					Location spawn = clicker.getLocation();
+					World spawnworld = clicker.getWorld();
+					spawnworld.spawnEntity(spawn.add(5, 5, 5), entitySpawn);
 					
 					
 				}
 			}
 			
-			if(clicked.isSimilar(crushroom)) {
-				if(apiEco.getBalance(playerUUID) < 1000) {
+			else if(clicked.getAmount() == 1) {
+				System.out.println(clicked.getType());
+				if(apiEco.getBalance(playerUUID) > 1000) {
 					apiEco.withdraw(playerUUID, 1000);
+					clicker.sendMessage("1000 Vous ont été prélevé");
+					@SuppressWarnings("deprecation")
+					EntityType entitySpawn = EntityType.fromName("erebus-crushroom");
+					Location spawn = clicker.getLocation();
+					World spawnworld = clicker.getWorld();
+					spawnworld.spawnEntity(spawn.add(5, 5, 5), entitySpawn);
 					
 					
 				}
 			}
 			
-			if(clicked.isSimilar(overlord)) {
-				if(apiEco.getBalance(playerUUID) < 4000) {
+			else if(clicked.getAmount() == 3) {
+				System.out.println(clicked.getType());
+				if(apiEco.getBalance(playerUUID) > 4000) {
 					apiEco.withdraw(playerUUID, 4000);
+					clicker.sendMessage("4000 Vous ont été prélevé");
+					@SuppressWarnings("deprecation")
+					EntityType entitySpawn = EntityType.fromName("erebus-antlionBoss");
+					Location spawn = clicker.getLocation();
+					World spawnworld = clicker.getWorld();
+					spawnworld.spawnEntity(spawn.add(5, 5, 5), entitySpawn);
 					
 					
 				}
 			}
-			
 			
 		}
 		
-		
 	}
+	//DEBUG
+	/*@EventHandler
+	public void mobSpawn(EntityDeathEvent die) {
+		String EntityId = die.getEntity().getType().getName();
+		System.out.println(EntityId);
+		
+	}*/
 
 }
