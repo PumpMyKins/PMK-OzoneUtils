@@ -15,7 +15,6 @@ public class MainOzone extends JavaPlugin {
 	private static MainOzone instance;
 	private static Config conf;
 	private static IslandManager is;
-	private MoneyCommand moneycmd;
 	
 	@Override
 	public void onEnable() {
@@ -47,7 +46,6 @@ public class MainOzone extends JavaPlugin {
 		
 		getServer().getPluginManager().registerEvents(new PlayerEvents(), this);
 		
-		getInstance().getCommand("money").setExecutor(moneycmd);
 	}
 	
 	@Override
