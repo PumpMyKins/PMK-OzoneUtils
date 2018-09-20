@@ -16,8 +16,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 
 import fr.pmk_ozone.erebus.commands.ISubCommand;
 import me.xanium.gemseconomy.api.GemsEconomyAPI;
@@ -46,7 +46,6 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 			List<String> LoreCrushRoom = new ArrayList<>();
 			List<String> LoreOverLord = new ArrayList<>();
 			
-			System.out.println("Sucess");
 			
 			//TARENTULE
 			ItemMeta tarentulaM = tarentula.getItemMeta();
@@ -103,14 +102,13 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 					EntityType entitySpawn = EntityType.fromName("erebus-tarantulaminiboss");
 					Location spawn = clicker.getLocation();
 					World spawnworld = clicker.getWorld();
-					spawnworld.spawnEntity(spawn.add(5, 5, 5), entitySpawn);
+					spawnworld.spawnEntity(spawn, entitySpawn);
 					
 					
 				}
 			}
 			
 			else if(clicked.getAmount() == 1) {
-				System.out.println(clicked.getType());
 				if(apiEco.getBalance(playerUUID) > 1000) {
 					apiEco.withdraw(playerUUID, 1000);
 					clicker.sendMessage("1000 Vous ont été prélevé");
@@ -118,14 +116,13 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 					EntityType entitySpawn = EntityType.fromName("erebus-crushroom");
 					Location spawn = clicker.getLocation();
 					World spawnworld = clicker.getWorld();
-					spawnworld.spawnEntity(spawn.add(5, 5, 5), entitySpawn);
+					spawnworld.spawnEntity(spawn, entitySpawn);
 					
 					
 				}
 			}
 			
 			else if(clicked.getAmount() == 3) {
-				System.out.println(clicked.getType());
 				if(apiEco.getBalance(playerUUID) > 4000) {
 					apiEco.withdraw(playerUUID, 4000);
 					clicker.sendMessage("4000 Vous ont été prélevé");
@@ -133,7 +130,7 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 					EntityType entitySpawn = EntityType.fromName("erebus-antlionBoss");
 					Location spawn = clicker.getLocation();
 					World spawnworld = clicker.getWorld();
-					spawnworld.spawnEntity(spawn.add(5, 5, 5), entitySpawn);
+					spawnworld.spawnEntity(spawn, entitySpawn);
 					
 					
 				}
@@ -142,6 +139,24 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 		}
 		
 	}
+
+	@EventHandler
+	public void erebusRedirection(PlayerTeleportEvent event) {
+		Location tpworld = event.getTo();
+		World tpdim = tpworld.getWorld();
+		if(tpdim.getName().endsWith("DIM66")) {
+			Location killzone = tpworld;
+			killzone.setY(32);
+			killzone.setZ(79896);
+			killzone.setX(2041);
+			event.getPlayer().teleport(tpworld);
+			
+		}
+		
+		
+	}
+	
+	
 	//DEBUG
 	/*@EventHandler
 	public void mobSpawn(EntityDeathEvent die) {
@@ -149,5 +164,4 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 		System.out.println(EntityId);
 		
 	}*/
-
 }
