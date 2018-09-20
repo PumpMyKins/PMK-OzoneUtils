@@ -2,6 +2,7 @@ package fr.pmk_ozone.erebus.commands;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -21,9 +22,16 @@ public class ErebusBossCommand implements ISubCommand{
 
 		
 	Inventory invBoss = Bukkit.createInventory(null, 9, ChatColor.RED + "" + ChatColor.BOLD + "Boss de Erebus");
-
-	//GUI OPENER + COMMAND SET
+	GemsEconomyAPI apiEco = new GemsEconomyAPI();
 	@SuppressWarnings("deprecation")
+	ItemStack tarentula = new ItemStack(Material.getMaterial(7200), 1,(short)0,(byte)43);
+	@SuppressWarnings("deprecation")
+	ItemStack crushroom = new ItemStack(Material.getMaterial(7200), 1,(short)0,(byte)40);
+	@SuppressWarnings("deprecation")
+	ItemStack overlord = new ItemStack(Material.getMaterial(7200), 1,(short)0,(byte)57);
+
+	
+	//GUI OPENER + COMMAND SET
 	@Override
 	public boolean onSubCommand(Player sender, Command cmd, List<String> args) {
 		
@@ -36,21 +44,18 @@ public class ErebusBossCommand implements ISubCommand{
 			System.out.println("Sucess");
 			
 			//TARENTULE
-			ItemStack tarentula = new ItemStack(Material.getMaterial(7200), 1,(short)0,(byte)43);
 			ItemMeta tarentulaM = tarentula.getItemMeta();
 			LoreTarantule.add("Prix D'apparition 2000$");
 			tarentulaM.setLore(LoreTarantule);
 			tarentula.setItemMeta(tarentulaM);
 			
 			//CRUSHROOM
-			ItemStack crushroom = new ItemStack(Material.getMaterial(7200), 1,(short)0,(byte)40);
 			ItemMeta crushroomM = crushroom.getItemMeta();
 			LoreCrushRoom.add("Prix D'apparition 1000$");
 			crushroomM.setLore(LoreCrushRoom);
 			crushroom.setItemMeta(crushroomM);
 			
 			//OVERLORD
-			ItemStack overlord = new ItemStack(Material.getMaterial(7200), 1,(short)0,(byte)57);
 			ItemMeta overlordM = overlord.getItemMeta();
 			LoreOverLord.add("Prix D'apparition 4000$");
 			overlordM.setLore(LoreOverLord);
@@ -71,20 +76,45 @@ public class ErebusBossCommand implements ISubCommand{
 			*
 			*
 			*/
-			sender.sendMessage("");
+			sender.sendMessage("§2Vous devez être dans l'Erebus");
 		}
 		
 		return false;
 	}
-	
+
 	//EVENT HANDLER FOR CLICKED ON EGGS
 	@EventHandler
 	public void onInventoryClicked(InventoryClickEvent event) {
 		Player clicker = (Player) event.getWhoClicked();
-		ItemStack clicked = event.getCurrentItem();
 		Inventory inventory = event.getInventory();
+		ItemStack clicked = event.getCurrentItem();
 		if(inventory.getName().equals(invBoss.getName())) {
 			event.setCancelled(true);
+			UUID playerUUID = clicker.getUniqueId();
+			if(clicked.isSimilar(tarentula)) {
+				
+				if(apiEco.getBalance(playerUUID) < 2000) {
+					apiEco.withdraw(playerUUID, 2000);
+					
+					
+				}
+			}
+			
+			if(clicked.isSimilar(crushroom)) {
+				if(apiEco.getBalance(playerUUID) < 1000) {
+					apiEco.withdraw(playerUUID, 1000);
+					
+					
+				}
+			}
+			
+			if(clicked.isSimilar(overlord)) {
+				if(apiEco.getBalance(playerUUID) < 4000) {
+					apiEco.withdraw(playerUUID, 4000);
+					
+					
+				}
+			}
 			
 			
 		}
