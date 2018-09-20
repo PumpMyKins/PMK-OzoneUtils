@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 import fr.pmk_ozone.erebus.commands.ISubCommand;
@@ -18,13 +19,14 @@ import net.md_5.bungee.api.ChatColor;
 
 public class ErebusBossCommand implements ISubCommand{
 
+		
+	Inventory invBoss = Bukkit.createInventory(null, 9, ChatColor.RED + "" + ChatColor.BOLD + "Boss de Erebus");
 
+	//GUI OPENER + COMMAND SET
 	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onSubCommand(Player sender, Command cmd, List<String> args) {
 		
-		GemsEconomyAPI GemApi = new GemsEconomyAPI();
-
 		if(sender.getWorld().getName().endsWith("DIM66")) {
 			
 			List<String> LoreTarantule = new ArrayList<>();
@@ -32,7 +34,6 @@ public class ErebusBossCommand implements ISubCommand{
 			List<String> LoreOverLord = new ArrayList<>();
 			
 			System.out.println("Sucess");
-			Inventory invBoss = Bukkit.createInventory(null, 9, ChatColor.RED + "" + ChatColor.BOLD + "Boss de Erebus");
 			
 			//TARENTULE
 			ItemStack tarentula = new ItemStack(Material.getMaterial(7200), 1,(short)0,(byte)43);
@@ -55,16 +56,13 @@ public class ErebusBossCommand implements ISubCommand{
 			overlordM.setLore(LoreOverLord);
 			overlord.setItemMeta(overlordM);
 			
-			invBoss.setItem(2, tarentula); //2000 Prix
-			invBoss.setItem(4, crushroom); //1000 Prix
-			invBoss.setItem(6, overlord);  //4000 Prix
+			invBoss.setItem(2, tarentula); //2000 
+			invBoss.setItem(4, crushroom); //1000 
+			invBoss.setItem(6, overlord);  //4000 
 			
 			sender.openInventory(invBoss);
-			if(InventoryClickEvent.getAction() != null ) {
-				
-				
-			}
 			
+
 		}
 		else {
 			/* DEBUG
@@ -73,9 +71,25 @@ public class ErebusBossCommand implements ISubCommand{
 			*
 			*
 			*/
+			sender.sendMessage("");
 		}
 		
 		return false;
+	}
+	
+	//EVENT HANDLER FOR CLICKED ON EGGS
+	@EventHandler
+	public void onInventoryClicked(InventoryClickEvent event) {
+		Player clicker = (Player) event.getWhoClicked();
+		ItemStack clicked = event.getCurrentItem();
+		Inventory inventory = event.getInventory();
+		if(inventory.getName().equals(invBoss.getName())) {
+			event.setCancelled(true);
+			
+			
+		}
+		
+		
 	}
 
 }
