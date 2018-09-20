@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import fr.pmk_ozone.command.MoneyCommand;
 import fr.pmk_ozone.config.Config;
 import fr.pmk_ozone.island.IslandManager;
 import fr.pmk_ozone.island.commands.HelpIslandCmd;
@@ -14,6 +15,7 @@ public class MainOzone extends JavaPlugin {
 	private static MainOzone instance;
 	private static Config conf;
 	private static IslandManager is;
+	private MoneyCommand moneycmd;
 	
 	@Override
 	public void onEnable() {
@@ -45,6 +47,7 @@ public class MainOzone extends JavaPlugin {
 		
 		getServer().getPluginManager().registerEvents(new PlayerEvents(), this);
 		
+		getInstance().getCommand("money").setExecutor(moneycmd);
 	}
 	
 	@Override
