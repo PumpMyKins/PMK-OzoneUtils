@@ -9,6 +9,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
 import fr.pmk_ozone.MainOzone;
+import fr.pmk_ozone.command.MoneyCommand;
 import fr.pmk_ozone.config.Config;
 import fr.pmk_ozone.island.commands.AddIslandCmd;
 import fr.pmk_ozone.island.commands.CreateIslandCmd;
@@ -63,10 +64,13 @@ public class IslandManager {
 	
 	
 	private IslandCommandExecutor islandCmd;
-	
+	private MoneyCommand moneyCmd;
+
+
 	public IslandManager() {
 		
 		islandCmd = new IslandCommandExecutor();
+		moneyCmd = new MoneyCommand();
 		
 		islandCmd.addSubCommand("help", new HelpIslandCmd());
 		islandCmd.addSubCommand("goto", new GoToIslandCmd());
@@ -82,6 +86,9 @@ public class IslandManager {
 		
 		MainOzone.getInstance().getCommand("island").setExecutor(islandCmd);
 		MainOzone.getInstance().getCommand("is").setExecutor(islandCmd);
+		
+		MainOzone.getInstance().getCommand("money").setExecutor(moneyCmd);
+
 		
 	}
 
@@ -205,5 +212,13 @@ public class IslandManager {
 		y.set("islands." + uuid + ".z", -1);	
 		
 		y.save(f);
+	}
+	
+	public MoneyCommand getMoneyCmd() {
+		return moneyCmd;
+	}
+
+	public void setMoneyCmd(MoneyCommand moneyCmd) {
+		this.moneyCmd = moneyCmd;
 	}
 }

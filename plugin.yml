@@ -9,3 +9,5 @@ commands:
     description: Affiche toutes les commandes disponibles pour les iles.
   erebus:
     description: Affiche les commande disponible pour erebus.
+  money:
+    description: Affiche votre argents.
