@@ -79,6 +79,7 @@ public class IslandManager {
 		
 		islandCmd.addSubCommand("leave", new LeaveIslandCmd());
 		islandCmd.addSubCommand("reset", new ResetIslandCmd());
+		islandCmd.addSubCommand("c-reset", new ResetIslandCmd());
 		
 		MainOzone.getInstance().getCommand("island").setExecutor(islandCmd);
 		MainOzone.getInstance().getCommand("is").setExecutor(islandCmd);
