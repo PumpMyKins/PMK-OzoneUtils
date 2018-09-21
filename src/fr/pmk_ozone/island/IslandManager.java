@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import fr.pmk_ozone.MainOzone;
 import fr.pmk_ozone.config.Config;
 import fr.pmk_ozone.island.commands.AddIslandCmd;
+import fr.pmk_ozone.island.commands.CResetIslandCmd;
 import fr.pmk_ozone.island.commands.CreateIslandCmd;
 import fr.pmk_ozone.island.commands.GoToIslandCmd;
 import fr.pmk_ozone.island.commands.HelpIslandCmd;
@@ -79,7 +80,7 @@ public class IslandManager {
 		
 		islandCmd.addSubCommand("leave", new LeaveIslandCmd());
 		islandCmd.addSubCommand("reset", new ResetIslandCmd());
-		islandCmd.addSubCommand("c-reset", new ResetIslandCmd());
+		islandCmd.addSubCommand("c-reset", new CResetIslandCmd());
 		
 		MainOzone.getInstance().getCommand("island").setExecutor(islandCmd);
 		MainOzone.getInstance().getCommand("is").setExecutor(islandCmd);
