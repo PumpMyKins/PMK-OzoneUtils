@@ -28,21 +28,8 @@ public class ResetIslandCmd implements ISubCommand {
 			
 			Island island = MainOzone.getIslandManager().getIsland(sender);
 			
-			if(confirmUUIDList.contains(sender.getUniqueId().toString())) {
-				
-				// demande de confirmation reset island
-				aide2(sender);
-				return true;
-				
-			}else {
-				
-				//commande de confirmation
-				
-				
-				
-				
-			} 
-			
+			// demande de confirmation reset island
+			aide2(sender);
 			return true;
 			
 		}else {
@@ -63,11 +50,12 @@ public class ResetIslandCmd implements ISubCommand {
 		
 		valide.setHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT, new ComponentBuilder( "§3§lReset l'ile !" ).create() ) );
 		
-		TextComponent msg = new TextComponent("Etes vous sure de vouloir reset votre ile ?  ");
-		msg.setColor(ChatColor.AQUA);
+		TextComponent msg = new TextComponent(Island.prefix + "§r§cEtes vous sure de vouloir reset votre ile ?  ");
 		msg.addExtra(valide);
 		
 		sender.spigot().sendMessage(msg);
+		
+		sender.sendMessage("§cATTENTION, vous perdrez votre progression au niveau des quetes, ainsi que vos constructions !");
 		
 	}
 
