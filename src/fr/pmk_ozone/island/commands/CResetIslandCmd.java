@@ -33,7 +33,7 @@ public class CResetIslandCmd implements ISubCommand {
 				List<String> futureMemberList = new ArrayList<>();
 				
 				// reset de l'island
-				
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				// reset & set de l'owner
 				
 				String owner = sender.getUniqueId().toString();
@@ -51,8 +51,12 @@ public class CResetIslandCmd implements ISubCommand {
 					e1.printStackTrace();
 				}
 				
+				new CreateIslandCmd().onSubCommand(sender, cmd, args);	// création de la nouvelle ile
 				
+		
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				// récupération de la liste des joueurs
+				
 				for (Iterator<String> i = island.getPlayerList().iterator(); i.hasNext();) {
 					
 					String uuid = i.next();
@@ -61,17 +65,33 @@ public class CResetIslandCmd implements ISubCommand {
 					
 					i.remove();
 					
+					OfflinePlayer offp = MainOzone.getInstance().getServer().getOfflinePlayer(UUID.fromString(uuid));
+					
+					if(offp.isOnline()) {
+						
+						((CommandSender) offp).sendMessage(Island.prefix + "§r§d Votre ile est en cours de reset !");
+						((Player) offp).teleport(new Location(Bukkit.getWorld("Void"), -29, 84, -480));
+						
+					}
+					
 					try {
-						IslandManager.unsetIsland(MainOzone.getInstance().getServer().getOfflinePlayer(UUID.fromString(uuid)));
+						IslandManager.unsetIsland(offp);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
-						System.out.println("Unset Island");
+						System.out.println("Unset Island ERROR");
 						e.printStackTrace();
 					}
 					
 				}
 				
+				try {
+					island.save();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				
 				return true;
 				
