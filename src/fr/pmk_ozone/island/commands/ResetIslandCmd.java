@@ -39,6 +39,11 @@ public class ResetIslandCmd implements ISubCommand {
 		}
 		
 	}
+	
+	public void aide3(Player p) {
+		// TODO Auto-generated method stub
+		p.sendMessage(Island.prefix + "§r§c Vous devez être le créateur de l'lie pour faire cela !");
+	}
 
 	private void aide2(Player sender) {
 		// TODO Auto-generated method stub
