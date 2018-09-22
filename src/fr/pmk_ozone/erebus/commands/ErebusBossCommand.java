@@ -18,6 +18,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 
 import fr.pmk_ozone.erebus.commands.ISubCommand;
 import me.xanium.gemseconomy.api.GemsEconomyAPI;
@@ -141,7 +142,7 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 	@EventHandler
 	public void erebusRedirection(PlayerTeleportEvent event) {
 
-		if(event.getCause().equals("PLUGIN")) {
+		if(event.getCause() == TeleportCause.PLUGIN && event.getTo().getWorld().getName().endsWith("DIM66")) {
 			event.setCancelled(true);
 		}
 		else {
@@ -153,6 +154,7 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 				killzone.setZ(79896);
 				killzone.setX(2041);
 				teleportPlayer(event.getPlayer(), killzone);
+			
 			}
 		}
 	}
