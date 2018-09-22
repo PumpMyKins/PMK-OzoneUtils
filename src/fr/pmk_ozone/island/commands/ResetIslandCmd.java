@@ -62,7 +62,7 @@ public class ResetIslandCmd implements ISubCommand {
 	@Override
 	public void aide(Player p) {
 		// TODO Auto-generated method stub
-		p.sendMessage(Island.prefix + "§r§c Vous devez avoir une île pour pouvoir en refaire une autre !");
+		p.sendMessage(Island.prefix + "§r§c Vous devez avoir une île pour pouvoir reset la votre !");
 		
 	}
 
