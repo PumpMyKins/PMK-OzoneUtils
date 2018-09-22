@@ -36,6 +36,7 @@ public class StopManager {
 		
 	}
 
+	@SuppressWarnings("deprecation")
 	public static void stop() {
 		// TODO Auto-generated method stub
 		

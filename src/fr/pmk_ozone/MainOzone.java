@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import fr.pmk_ozone.command.MoneyCommand;
 import fr.pmk_ozone.config.Config;
 import fr.pmk_ozone.erebus.ErebusManager;
 import fr.pmk_ozone.erebus.commands.ErebusBossCommand;
