@@ -131,8 +131,6 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 					Location spawn = clicker.getLocation();
 					World spawnworld = clicker.getWorld();
 					spawnworld.spawnEntity(spawn, entitySpawn);
-					
-					
 				}
 			}
 			
@@ -150,6 +148,7 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 			killzone.setZ(79896);
 			killzone.setX(2041);
 			event.getPlayer().teleport(tpworld);
+			event.setCancelled(true);
 			
 		}
 		
