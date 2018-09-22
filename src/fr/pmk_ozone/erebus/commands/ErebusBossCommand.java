@@ -140,19 +140,25 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 
 	@EventHandler
 	public void erebusRedirection(PlayerTeleportEvent event) {
-		Location tpworld = event.getTo();
-		World tpdim = tpworld.getWorld();
-		if(tpdim.getName().endsWith("DIM66")) {
-			Location killzone = tpworld;
-			killzone.setY(32);
-			killzone.setZ(79896);
-			killzone.setX(2041);
-			event.getPlayer().teleport(tpworld);
+
+		if(event.getCause().equals("PLUGIN")) {
 			event.setCancelled(true);
-			
 		}
+		else {
+			Location tpworld = event.getTo();
+			World tpdim = tpworld.getWorld();
+			if(tpdim.getName().endsWith("DIM66")) {
+				Location killzone = tpworld;
+				killzone.setY(32);
+				killzone.setZ(79896);
+				killzone.setX(2041);
+				teleportPlayer(event.getPlayer(), killzone);
+			}
+		}
+	}
+	public void teleportPlayer(Player player, Location where) {
 		
-		
+		player.teleport(where);
 	}
 	
 	
