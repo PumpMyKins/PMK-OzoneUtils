@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
@@ -199,6 +200,12 @@ public class Island {
 	}
 	
 	public void addPlayer(Player p) {
+		
+		playerList.add(p.getUniqueId().toString());
+		
+	}
+	
+	public void addPlayer(OfflinePlayer p) {
 		
 		playerList.add(p.getUniqueId().toString());
 		
