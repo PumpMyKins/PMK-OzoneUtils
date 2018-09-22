@@ -3,7 +3,6 @@ package fr.pmk_ozone.island;
 import java.io.File;
 import java.io.IOException;
 
-import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
