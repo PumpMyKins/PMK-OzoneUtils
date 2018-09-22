@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.pmk_ozone.command.MoneyCommand;
+import fr.pmk_ozone.command.StartingStuffCommand;
 import fr.pmk_ozone.config.Config;
 import fr.pmk_ozone.erebus.ErebusManager;
 import fr.pmk_ozone.erebus.commands.ErebusBossCommand;
@@ -50,6 +51,9 @@ public class MainOzone extends JavaPlugin {
 		
 		getServer().getPluginManager().registerEvents(new PlayerEvents(), this);
 		getServer().getPluginManager().registerEvents(new ErebusBossCommand(), this);
+		
+		//starting stuff récupération commande
+		getCommand("start").setExecutor(new StartingStuffCommand());
 		
 	}
 	
