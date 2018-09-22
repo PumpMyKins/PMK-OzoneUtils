@@ -1,7 +1,10 @@
 package fr.pmk_ozone.island.commands;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
@@ -23,7 +26,28 @@ public class CResetIslandCmd implements ISubCommand {
 			
 			if(sender.getUniqueId().toString().equals(island.getOwnerUUID())) {
 				
+				List<String> futureMemberList = new ArrayList<>();
+				
 				// reset de l'island
+				
+				// récupération de la liste des joueurs
+				for (Iterator<String> i = island.getPlayerList().iterator(); i.hasNext();) {
+					
+					String uuid = i.next();
+					
+					futureMemberList.add(uuid); 	// ajout à la future team
+					
+					i.remove();
+					
+					try {
+						IslandManager.unsetIsland(MainOzone.getInstance().getServer().getOfflinePlayer(UUID.fromString(uuid)));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						System.out.println("Unset Island");
+						e.printStackTrace();
+					}
+					
+				}
 				
 				
 				
