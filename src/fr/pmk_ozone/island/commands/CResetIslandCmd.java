@@ -51,7 +51,10 @@ public class CResetIslandCmd implements ISubCommand {
 					e1.printStackTrace();
 				}
 				
-				new CreateIslandCmd().onSubCommand(sender, cmd, args);	// création de la nouvelle ile
+				CreateIslandCmd ciCmd = new CreateIslandCmd();				
+				ciCmd.onSubCommand(sender, cmd, args); // création de la nouvelle ile
+				sender.sendMessage(Island.prefix +"§d Ile recréée avec succès !");
+				ciCmd.aide1(sender);	
 				
 		
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
