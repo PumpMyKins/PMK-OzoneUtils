@@ -1,5 +1,6 @@
 package fr.pmk_ozone.island.commands;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.command.Command;
@@ -20,9 +21,21 @@ public class CResetIslandCmd implements ISubCommand {
 			
 			Island island = MainOzone.getIslandManager().getIsland(sender);
 			
-			// reset de l'island
-			
-			return true;
+			if(sender.getUniqueId().toString().equals(island.getOwnerUUID())) {
+				
+				// reset de l'island
+				
+				
+				
+				return true;
+				
+			}else {
+				
+				// impossible car pas propriétaire
+				new ResetIslandCmd().aide3(sender);
+				return true;
+				
+			}
 			
 		}else {
 			
