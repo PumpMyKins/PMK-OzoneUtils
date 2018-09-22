@@ -96,6 +96,34 @@ public class CResetIslandCmd implements ISubCommand {
 				
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				
+				// ajout des nouveaux membres
+				
+				island = MainOzone.getIslandManager().getIsland(sender); 	// récupération de la nouvelle ile
+				
+				for (String uuid : futureMemberList) {
+				
+					OfflinePlayer offp = MainOzone.getInstance().getServer().getOfflinePlayer(UUID.fromString(uuid));
+					
+					island.addPlayer(offp);
+					
+					if(offp.isOnline()) {
+						
+						((Player) offp).sendMessage(Island.prefix +"§d Ile recréée avec succès !");
+						new CreateIslandCmd().aide1((Player) offp);
+						
+					}
+					
+				}
+				
+				try {
+					island.save();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				// reset terminé
+				
 				return true;
 				
 			}else {
