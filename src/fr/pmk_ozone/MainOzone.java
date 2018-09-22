@@ -51,6 +51,9 @@ public class MainOzone extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new PlayerEvents(), this);
 		getServer().getPluginManager().registerEvents(new ErebusBossCommand(), this);
 		
+		// register money commande
+		MainOzone.getInstance().getCommand("money").setExecutor(new MoneyCommand());
+		
 	}
 	
 	@Override

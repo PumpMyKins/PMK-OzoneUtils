@@ -70,7 +70,6 @@ public class IslandManager {
 	public IslandManager() {
 		
 		islandCmd = new IslandCommandExecutor();
-		moneyCmd = new MoneyCommand();
 		
 		islandCmd.addSubCommand("help", new HelpIslandCmd());
 		islandCmd.addSubCommand("goto", new GoToIslandCmd());
@@ -86,9 +85,6 @@ public class IslandManager {
 		
 		MainOzone.getInstance().getCommand("island").setExecutor(islandCmd);
 		MainOzone.getInstance().getCommand("is").setExecutor(islandCmd);
-		
-		MainOzone.getInstance().getCommand("money").setExecutor(moneyCmd);
-
 		
 	}
 
