@@ -34,6 +34,24 @@ public class CResetIslandCmd implements ISubCommand {
 				
 				// reset de l'island
 				
+				// reset & set de l'owner
+				
+				String owner = sender.getUniqueId().toString();
+				
+				island.setOwnerUUID("none");
+				
+				sender.sendMessage(Island.prefix + "§r§d Votre ile est en cours de reset !");
+				sender.teleport(new Location(Bukkit.getWorld("Void"), -29, 84, -480));
+				
+				try {
+					IslandManager.unsetIsland(sender);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					System.out.println("Unset Island ERROR");
+					e1.printStackTrace();
+				}
+				
+				
 				// récupération de la liste des joueurs
 				for (Iterator<String> i = island.getPlayerList().iterator(); i.hasNext();) {
 					
