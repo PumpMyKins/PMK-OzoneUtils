@@ -18,6 +18,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 
 import fr.pmk_ozone.erebus.commands.ISubCommand;
 import me.xanium.gemseconomy.api.GemsEconomyAPI;
@@ -131,8 +132,6 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 					Location spawn = clicker.getLocation();
 					World spawnworld = clicker.getWorld();
 					spawnworld.spawnEntity(spawn, entitySpawn);
-					
-					
 				}
 			}
 			
@@ -142,18 +141,26 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 
 	@EventHandler
 	public void erebusRedirection(PlayerTeleportEvent event) {
-		Location tpworld = event.getTo();
-		World tpdim = tpworld.getWorld();
-		if(tpdim.getName().endsWith("DIM66")) {
-			Location killzone = tpworld;
-			killzone.setY(32);
-			killzone.setZ(79896);
-			killzone.setX(2041);
-			event.getPlayer().teleport(tpworld);
-			
+
+		if(event.getCause() == TeleportCause.PLUGIN && event.getTo().getWorld().getName().endsWith("DIM66")) {
+			event.setCancelled(true);
 		}
+		else {
+			Location tpworld = event.getTo();
+			World tpdim = tpworld.getWorld();
+			if(tpdim.getName().endsWith("DIM66")) {
+				Location killzone = tpworld;
+				killzone.setY(32);
+				killzone.setZ(79896);
+				killzone.setX(2041);
+				teleportPlayer(event.getPlayer(), killzone);
+			
+			}
+		}
+	}
+	public void teleportPlayer(Player player, Location where) {
 		
-		
+		player.teleport(where);
 	}
 	
 	
