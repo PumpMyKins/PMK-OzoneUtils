@@ -9,6 +9,7 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -28,6 +29,8 @@ public class CResetIslandCmd implements ISubCommand {
 			
 			Island island = MainOzone.getIslandManager().getIsland(sender);
 			
+			Server server = MainOzone.getInstance().getServer();
+			
 			if(sender.getUniqueId().toString().equals(island.getOwnerUUID())) {
 				
 				List<String> futureMemberList = new ArrayList<>();
@@ -37,6 +40,8 @@ public class CResetIslandCmd implements ISubCommand {
 				// reset & set de l'owner
 				
 				String owner = sender.getUniqueId().toString();
+				
+				server.dispatchCommand(server.getConsoleSender(), "bq_admin reset all " + owner); // reset des quetes
 				
 				island.setOwnerUUID("none");
 				
@@ -68,7 +73,9 @@ public class CResetIslandCmd implements ISubCommand {
 					
 					i.remove();
 					
-					OfflinePlayer offp = MainOzone.getInstance().getServer().getOfflinePlayer(UUID.fromString(uuid));
+					OfflinePlayer offp = server.getOfflinePlayer(UUID.fromString(uuid));
+					
+					server.dispatchCommand(server.getConsoleSender(), "bq_admin reset all " + uuid); // reset des quetes
 					
 					if(offp.isOnline()) {
 						
@@ -102,7 +109,7 @@ public class CResetIslandCmd implements ISubCommand {
 				
 				for (String uuid : futureMemberList) {
 				
-					OfflinePlayer offp = MainOzone.getInstance().getServer().getOfflinePlayer(UUID.fromString(uuid));
+					OfflinePlayer offp = server.getOfflinePlayer(UUID.fromString(uuid));
 					
 					island.addPlayer(offp);
 					
@@ -111,7 +118,8 @@ public class CResetIslandCmd implements ISubCommand {
 						((Player) offp).sendMessage(Island.prefix +"§d Ile recréée avec succès !");
 						new CreateIslandCmd().aide1((Player) offp);
 						
-					}
+					}		
+					
 					
 				}
 				
