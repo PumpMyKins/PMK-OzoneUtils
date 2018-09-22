@@ -28,9 +28,19 @@ public class ResetIslandCmd implements ISubCommand {
 			
 			Island island = MainOzone.getIslandManager().getIsland(sender);
 			
-			// demande de confirmation reset island
-			aide2(sender);
-			return true;
+			if(sender.getUniqueId().toString().equals(island.getOwnerUUID())) {
+				
+				// demande de confirmation reset island
+				aide2(sender);
+				return true;
+				
+			}else {
+				
+				// doit etre propriétaire
+				aide3(sender);
+				return true;
+				
+			}
 			
 		}else {
 			
