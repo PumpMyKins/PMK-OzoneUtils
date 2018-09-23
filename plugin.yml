@@ -11,3 +11,5 @@ commands:
     description: Affiche les commande disponible pour erebus.
   money:
     description: Affiche votre argents.
+  start:
+    description: recuperation du stuff de depart
