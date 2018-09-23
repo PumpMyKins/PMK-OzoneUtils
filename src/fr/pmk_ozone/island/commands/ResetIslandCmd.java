@@ -65,7 +65,7 @@ public class ResetIslandCmd implements ISubCommand {
 		
 		valide.setHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT, new ComponentBuilder( "§3§lReset l'ile !" ).create() ) );
 		
-		TextComponent msg = new TextComponent(Island.prefix + "§r§cEtes vous sure de vouloir reset votre ile ?  ");
+		TextComponent msg = new TextComponent(Island.prefix + "§r§cConfirmez vous le reset ? ");
 		msg.addExtra(valide);
 		
 		sender.spigot().sendMessage(msg);
