@@ -3,7 +3,6 @@ package fr.pmk_ozone.island;
 import java.io.File;
 import java.io.IOException;
 
-import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -70,7 +69,6 @@ public class IslandManager {
 	public IslandManager() {
 		
 		islandCmd = new IslandCommandExecutor();
-		moneyCmd = new MoneyCommand();
 		
 		islandCmd.addSubCommand("help", new HelpIslandCmd());
 		islandCmd.addSubCommand("goto", new GoToIslandCmd());
@@ -86,9 +84,6 @@ public class IslandManager {
 		
 		MainOzone.getInstance().getCommand("island").setExecutor(islandCmd);
 		MainOzone.getInstance().getCommand("is").setExecutor(islandCmd);
-		
-		MainOzone.getInstance().getCommand("money").setExecutor(moneyCmd);
-
 		
 	}
 
