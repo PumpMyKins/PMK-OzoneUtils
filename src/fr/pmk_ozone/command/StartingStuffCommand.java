@@ -35,7 +35,7 @@ public class StartingStuffCommand implements CommandExecutor {
 			//check du timestamp
 			Timestamp t = hashStartHash.get(uuid);
 			
-			if(t.getTime() >= 900000) {	// 15 minutes d'attente
+			if(t.getTime() <= 900000) {	// 15 minutes d'attente
 				//envoie du message d'erreur
 				
 				sender.sendMessage(Island.prefix + "§r§c Vous devez attendre avant de pouvoir reprendre le kit !");
