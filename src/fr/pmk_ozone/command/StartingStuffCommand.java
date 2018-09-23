@@ -46,7 +46,7 @@ public class StartingStuffCommand implements CommandExecutor {
 		}
 		
 		// execution de la commande
-		Inventory inv = Bukkit.createInventory(null, 18, ChatColor.RED + "" + ChatColor.BOLD + "Stuff de départ");
+		Inventory inv = Bukkit.createInventory(null, 6, ChatColor.BLUE + "" + ChatColor.BOLD + "Stuff de départ");
 		
 		// ajout des items
 		
