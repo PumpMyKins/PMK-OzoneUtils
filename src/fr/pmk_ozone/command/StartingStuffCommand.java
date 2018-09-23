@@ -23,6 +23,10 @@ public class StartingStuffCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String arg, String[] args) {
 		
+		if(!(sender instanceof Player)) {
+			return true;
+		}
+		
 		Player p = (Player) sender;
 		String uuid = p.getUniqueId().toString();
 		
