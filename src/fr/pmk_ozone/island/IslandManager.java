@@ -3,14 +3,15 @@ package fr.pmk_ozone.island;
 import java.io.File;
 import java.io.IOException;
 
-import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
 import fr.pmk_ozone.MainOzone;
+import fr.pmk_ozone.command.MoneyCommand;
 import fr.pmk_ozone.config.Config;
 import fr.pmk_ozone.island.commands.AddIslandCmd;
+import fr.pmk_ozone.island.commands.CResetIslandCmd;
 import fr.pmk_ozone.island.commands.CreateIslandCmd;
 import fr.pmk_ozone.island.commands.GoToIslandCmd;
 import fr.pmk_ozone.island.commands.HelpIslandCmd;
@@ -63,7 +64,9 @@ public class IslandManager {
 	
 	
 	private IslandCommandExecutor islandCmd;
-	
+	private MoneyCommand moneyCmd;
+
+
 	public IslandManager() {
 		
 		islandCmd = new IslandCommandExecutor();
@@ -79,6 +82,7 @@ public class IslandManager {
 		
 		islandCmd.addSubCommand("leave", new LeaveIslandCmd());
 		islandCmd.addSubCommand("reset", new ResetIslandCmd());
+		islandCmd.addSubCommand("c-reset", new CResetIslandCmd());
 		
 		MainOzone.getInstance().getCommand("island").setExecutor(islandCmd);
 		MainOzone.getInstance().getCommand("is").setExecutor(islandCmd);
@@ -205,5 +209,13 @@ public class IslandManager {
 		y.set("islands." + uuid + ".z", -1);	
 		
 		y.save(f);
+	}
+	
+	public MoneyCommand getMoneyCmd() {
+		return moneyCmd;
+	}
+
+	public void setMoneyCmd(MoneyCommand moneyCmd) {
+		this.moneyCmd = moneyCmd;
 	}
 }
