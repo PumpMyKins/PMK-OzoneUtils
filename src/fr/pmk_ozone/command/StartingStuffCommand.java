@@ -38,7 +38,7 @@ public class StartingStuffCommand implements CommandExecutor {
 			if(new Timestamp(System.currentTimeMillis()).getTime() - t.getTime() <= 90000) {	// 15 minutes d'attente
 				//envoie du message d'erreur
 				
-				sender.sendMessage(Island.prefix + "§r§c Vous devez attendre avant de pouvoir reprendre le kit !");
+				sender.sendMessage(Island.prefix + "§r§c Vous devez attendre avant de pouvoir reprendre le stuff de depart !");
 				
 				return true;
 			}			
@@ -48,9 +48,8 @@ public class StartingStuffCommand implements CommandExecutor {
 		}else {
 			
 			// ajout du joueur et du timestamp
-			
-			hashStartHash.put(uuid, new Timestamp(System.currentTimeMillis()));			
-			
+			hashStartHash.put(uuid, new Timestamp(System.currentTimeMillis()));		
+
 		}
 		
 		// execution de la commande
