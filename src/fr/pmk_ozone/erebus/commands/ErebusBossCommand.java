@@ -98,7 +98,7 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 			if(clicked.getAmount() == 2) {
 				if(apiEco.getBalance(playerUUID) > 1000) {
 					apiEco.withdraw(playerUUID, 1000);
-					clicker.sendMessage("2000 Vous ont été prélevé");
+					clicker.sendMessage("1000 Vous ont été prélevé");
 					@SuppressWarnings("deprecation")
 					EntityType entitySpawn = EntityType.fromName("erebus-tarantulaminiboss");
 					Location spawn = clicker.getLocation();
@@ -126,7 +126,7 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 			else if(clicked.getAmount() == 3) {
 				if(apiEco.getBalance(playerUUID) > 1000) {
 					apiEco.withdraw(playerUUID, 1000);
-					clicker.sendMessage("4000 Vous ont été prélevé");
+					clicker.sendMessage("1000 Vous ont été prélevé");
 					@SuppressWarnings("deprecation")
 					EntityType entitySpawn = EntityType.fromName("erebus-antlionBoss");
 					Location spawn = clicker.getLocation();
