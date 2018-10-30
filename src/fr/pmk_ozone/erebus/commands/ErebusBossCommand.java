@@ -50,7 +50,7 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 			
 			//TARENTULE
 			ItemMeta tarentulaM = tarentula.getItemMeta();
-			LoreTarantule.add("Prix D'apparition 2000$");
+			LoreTarantule.add("Prix D'apparition 1000$");
 			tarentulaM.setLore(LoreTarantule);
 			tarentula.setItemMeta(tarentulaM);
 			
@@ -62,7 +62,7 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 			
 			//OVERLORD
 			ItemMeta overlordM = overlord.getItemMeta();
-			LoreOverLord.add("Prix D'apparition 4000$");
+			LoreOverLord.add("Prix D'apparition 1000$");
 			overlordM.setLore(LoreOverLord);
 			overlord.setItemMeta(overlordM);
 			
@@ -96,8 +96,8 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 			event.setCancelled(true);
 			UUID playerUUID = clicker.getUniqueId();
 			if(clicked.getAmount() == 2) {
-				if(apiEco.getBalance(playerUUID) > 2000) {
-					apiEco.withdraw(playerUUID, 2000);
+				if(apiEco.getBalance(playerUUID) > 1000) {
+					apiEco.withdraw(playerUUID, 1000);
 					clicker.sendMessage("2000 Vous ont été prélevé");
 					@SuppressWarnings("deprecation")
 					EntityType entitySpawn = EntityType.fromName("erebus-tarantulaminiboss");
@@ -124,8 +124,8 @@ public class ErebusBossCommand implements ISubCommand, Listener{
 			}
 			
 			else if(clicked.getAmount() == 3) {
-				if(apiEco.getBalance(playerUUID) > 4000) {
-					apiEco.withdraw(playerUUID, 4000);
+				if(apiEco.getBalance(playerUUID) > 1000) {
+					apiEco.withdraw(playerUUID, 1000);
 					clicker.sendMessage("4000 Vous ont été prélevé");
 					@SuppressWarnings("deprecation")
 					EntityType entitySpawn = EntityType.fromName("erebus-antlionBoss");
