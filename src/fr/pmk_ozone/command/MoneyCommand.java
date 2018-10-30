@@ -18,7 +18,7 @@ public class MoneyCommand implements CommandExecutor{
 		Player sender = (Player) cmdSender;
 		if(sender instanceof Player) {
 			double balance = round(apiEco.getBalance(sender.getUniqueId()), 2);
-			sender.sendMessage("Â§6Â§l[Â§rÂ§2PumpMyEconomyÂ§6Â§l]Â§rÂ§2Vous avez Â§rÂ§4"+ balance +" Â§rÂ§6PumpCoins");
+			sender.sendMessage("§6§l[§r§2PumpMyEconomy§6§l]§r§2Vous avez §r§4"+ balance +" §r§6PumpCoins");
 		}
 		else {
 			System.out.println("You are not a player");
