@@ -21,16 +21,16 @@ import com.sk89q.worldedit.data.DataException;
 import com.sk89q.worldedit.schematic.SchematicFormat;
 
 import fr.pmk_ozone.MainOzone;
-import fr.pmk_ozone.island.data.IslandFileData;
+import fr.pumpmyskycore.IslandFileData;
 
 @SuppressWarnings("deprecation")
 public class Island {
 	
-	public static final String prefix = "§6§l[§r§2Pump§eMy§aIsland§r§6§l]";
+	public static final String prefix = "ï¿½6ï¿½l[ï¿½rï¿½2Pumpï¿½eMyï¿½aIslandï¿½rï¿½6ï¿½l]";
 
 	public static Island create(Player p) throws IOException {
 		
-		//création du fichier
+		//crï¿½ation du fichier
 		
 		IslandFileData isfd = getPathFileIsland();
 		
@@ -119,7 +119,7 @@ public class Island {
 		}
 		
 		try {
-			throw new Exception("Plugin cassé donc serveur cassé FIN DU PO2");
+			throw new Exception("Plugin cassï¿½ donc serveur cassï¿½ FIN DU PO2");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

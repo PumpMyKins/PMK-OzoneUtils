@@ -10,16 +10,16 @@ import org.bukkit.entity.Player;
 import fr.pmk_ozone.MainOzone;
 import fr.pmk_ozone.command.MoneyCommand;
 import fr.pmk_ozone.config.Config;
-import fr.pmk_ozone.island.commands.AddIslandCmd;
-import fr.pmk_ozone.island.commands.CResetIslandCmd;
-import fr.pmk_ozone.island.commands.CreateIslandCmd;
-import fr.pmk_ozone.island.commands.GoToIslandCmd;
-import fr.pmk_ozone.island.commands.HelpIslandCmd;
-import fr.pmk_ozone.island.commands.JoinIslandCmd;
-import fr.pmk_ozone.island.commands.KickIslandCmd;
-import fr.pmk_ozone.island.commands.LeaveIslandCmd;
-import fr.pmk_ozone.island.commands.ResetIslandCmd;
-import fr.pmk_ozone.island.data.IslandFileData;
+import fr.pumpmyskybukkit.commands.AddIslandCmd;
+import fr.pumpmyskybukkit.commands.CResetIslandCmd;
+import fr.pumpmyskybukkit.commands.CreateIslandCmd;
+import fr.pumpmyskybukkit.commands.GoToIslandCmd;
+import fr.pumpmyskybukkit.commands.HelpIslandCmd;
+import fr.pumpmyskybukkit.commands.JoinIslandCmd;
+import fr.pumpmyskybukkit.commands.KickIslandCmd;
+import fr.pumpmyskybukkit.commands.LeaveIslandCmd;
+import fr.pumpmyskybukkit.commands.ResetIslandCmd;
+import fr.pumpmyskycore.IslandFileData;
 
 public class IslandManager {
 

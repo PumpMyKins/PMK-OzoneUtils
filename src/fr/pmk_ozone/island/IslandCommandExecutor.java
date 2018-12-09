@@ -8,9 +8,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import fr.pmk_ozone.island.commands.GoToIslandCmd;
-import fr.pmk_ozone.island.commands.HelpIslandCmd;
-import fr.pmk_ozone.island.commands.ISubCommand;
+import fr.pumpmyskybukkit.commands.GoToIslandCmd;
+import fr.pumpmyskybukkit.commands.HelpIslandCmd;
+import fr.pumpmyskybukkit.commands.ISubCommand;
 
 public class IslandCommandExecutor implements CommandExecutor {
 
@@ -47,7 +47,7 @@ public class IslandCommandExecutor implements CommandExecutor {
 							return true;
 							
 						}else {
-							// permission trouvé
+							// permission trouvï¿½
 							System.out.println("Executor sub command : " + s.getSubCommandExecutor().getClass().getName());
 							return s.execute(p, cmd, getArgs(args));
 							

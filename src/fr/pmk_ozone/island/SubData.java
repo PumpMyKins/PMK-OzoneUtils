@@ -5,7 +5,7 @@ import java.util.List;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
-import fr.pmk_ozone.island.commands.ISubCommand;
+import fr.pumpmyskybukkit.commands.ISubCommand;
 
 public class SubData {
 

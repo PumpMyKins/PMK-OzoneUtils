@@ -11,7 +11,7 @@ import fr.pmk_ozone.config.Config;
 import fr.pmk_ozone.erebus.ErebusManager;
 import fr.pmk_ozone.erebus.commands.ErebusBossCommand;
 import fr.pmk_ozone.island.IslandManager;
-import fr.pmk_ozone.island.commands.HelpIslandCmd;
+import fr.pumpmyskybukkit.commands.HelpIslandCmd;
 
 public class MainOzone extends JavaPlugin {
 
